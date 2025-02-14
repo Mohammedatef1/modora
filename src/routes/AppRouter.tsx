@@ -22,7 +22,16 @@ const router = createBrowserRouter([
           },
           {
               path: "products/:prefix",
-              element: <Products/>
+              element: <Products/>,
+              loader: ( { params } )=> {
+                if (typeof params.prefix !== "string" || !(/^[A-Za-z]+$/).test(params.prefix)){
+                    throw new Response("Bad Request", {
+                        statusText: "Sorry, This category not found",
+                        status: 400
+                    })
+                }
+                return true
+              }
           },
           {
               path: "about-us",

@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import ShoppingCart from "@components/eCommerce/ShopingCart";
 
 const Header = () => {
@@ -8,15 +8,15 @@ const Header = () => {
       <h1 className="logo text-slate-800 font-bold text-2xl">Quick <span className="text-white bg-primary p-2  rounded-md ">Cart</span></h1>
       <ShoppingCart></ShoppingCart>
     </div>
-    <div className="flex items-center justify-between ">
-      <nav className="">
-        <Link to="/">Home</Link>
-        <Link to="/categories">Categories</Link>
-        <Link to="/about-us">About us</Link>
+    <div className="flex items-center justify-between my-4 p-4 bg-secondary text-background nav-links-wrapper">
+      <nav className="flex items-center gap-3">
+        <NavLink className="link" to="/">Home</NavLink>
+        <NavLink className="link" to="/categories">Categories</NavLink>
+        <NavLink className="link" to="/about-us">About us</NavLink>
       </nav>
-      <nav>
-        <Link to="/register">Register</Link>
-        <Link to="/login">Login</Link>
+      <nav className="flex items-center gap-3">
+        <NavLink className="link" to="/register">Register</NavLink>
+        <NavLink className="link" to="/login">Login</NavLink>
       </nav>
     </div>
   </header> );
