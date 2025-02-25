@@ -3,7 +3,7 @@ import categoriesSlice from '@store/categories/categoriesSlice'
 
 export const store = configureStore({
   reducer: {
-    Categories : categoriesSlice
+    categories : categoriesSlice
   }
 })
 
