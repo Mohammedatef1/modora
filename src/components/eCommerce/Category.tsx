@@ -1,12 +1,7 @@
 import { Link } from "react-router-dom";
+import { TCategories } from "src/customTypes/category";
 
-interface IProps {
-  title: string,
-  prefix: string,
-  img: string
-}
-
-const Category = ({title , prefix , img}: IProps) => {
+const Category = ({title , prefix , img}: TCategories) => {
   return ( 
   <div className="flex flex-col items-center gap-y-4">
     <Link to={`/categories/products/${prefix}`}>

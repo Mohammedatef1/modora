@@ -1,12 +1,6 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from 'axios'
-
-type TCategories = {
-  id: number,
-  title: string,
-  prefix: string,
-  img: string
-}[]
+import { TCategories } from "src/customTypes/category";
 
 const actGetCategories = createAsyncThunk('categories/actGetCategories' , async (_,thunkApi)=>{
   const {rejectWithValue} = thunkApi;
