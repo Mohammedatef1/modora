@@ -9,8 +9,10 @@ const Categories = () => {
   
 
   useEffect(()=>{
-    dispatch(actGetCategories())
-  },[dispatch])
+    if(records.length == 0){
+      dispatch(actGetCategories())
+    }
+  },[dispatch, records])
 
   const renderedCategories = records.length > 0 ? records.map(record => (
     <Category {...record} key={record.id}/>

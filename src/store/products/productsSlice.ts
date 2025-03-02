@@ -18,7 +18,11 @@ const initialState: IProductSlice = {
 const ProductsSlice = createSlice({
   name: "products",
   initialState,
-  reducers: {},
+  reducers: {
+    productsCleanUp : (state)=>{
+      state.records = []
+    }
+  },
   extraReducers : (builder)=>{
     builder.addCase(actGetProducts.pending , (state) => {
       state.loading = "pending"
@@ -35,4 +39,5 @@ const ProductsSlice = createSlice({
   }
 })
 
+export const { productsCleanUp } = ProductsSlice.actions
 export default ProductsSlice.reducer
