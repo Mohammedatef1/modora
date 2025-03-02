@@ -3,7 +3,7 @@ import axios from 'axios'
 
 type TCategories = {
   id: number,
-  name: string,
+  title: string,
   prefix: string,
   img: string
 }[]

@@ -6,6 +6,7 @@ import { useEffect } from "react";
 const Categories = () => {
   const dispatch = useAppDispatch()
   const {error, loading , records} = useAppSelector(state => state.categories);
+  
 
   useEffect(()=>{
     dispatch(actGetCategories())

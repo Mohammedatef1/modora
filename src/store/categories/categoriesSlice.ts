@@ -4,7 +4,7 @@ import actGetCategories from "./actions/getAllCategories";
 interface CategoriesProps{
   records : {
     id: number,
-    name: string,
+    title: string,
     prefix: string,
     img: string
   }[],
