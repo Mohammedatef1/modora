@@ -16,7 +16,7 @@ const Products = () => {
       dispatch(productsCleanUp())
     }
   },[dispatch, params])
-  const {records , loading , error} = useAppSelector((state => state.Products))
+  const {records , loading , error} = useAppSelector((state => state.products))
   return ( 
     <Loading error={error} loading={loading}>
       <GridList records={records} renderedElementFunction={(record) => (<Product key={record.id} {...record}/>)}/>
