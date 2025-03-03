@@ -20,6 +20,8 @@
       "@store/*": ["src/store/*"],
       "@styles/*": ["src/styles/*"],
       "@utilities/*": ["src/utilities/*"],
+      "@feedback/*": ["src/feedback/*"],
+      "@customTypes": ["src/customTypes/*"]
     },
 
     /* Bundler mode */
