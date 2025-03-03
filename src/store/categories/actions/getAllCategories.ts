@@ -9,7 +9,7 @@ const actGetCategories = createAsyncThunk('categories/actGetCategories' , async 
     return response.data;
   } catch (error) {
     if(axios.isAxiosError(error)){
-      return rejectWithValue(error);
+      return rejectWithValue(error.message);
     }else{
       return rejectWithValue("An unexpected error");
     }

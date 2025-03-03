@@ -14,7 +14,6 @@ const Loading = ({error, loading, children}: LoadingProps) => {
   }
   
   if (loading === 'rejected'){
-    console.log(error)
     return(
       <p>{error}</p>
     )
