@@ -22,8 +22,8 @@ const Categories = () => {
   return ( 
   <Loading error={error} loading={loading}>
     <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 md:gap-12 p-6 md:p-12">
-    {renderedCategories}
-  </div>
+      {renderedCategories}
+    </div>
   </Loading> );
 }
  
