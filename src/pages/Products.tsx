@@ -1,3 +1,4 @@
+import GridList from "@components/common/GridList";
 import Product from "@components/eCommerce/Product";
 import Loading from "@feedback/Loading";
 import { useAppDispatch, useAppSelector } from "@store/hooks";
@@ -18,11 +19,7 @@ const Products = () => {
   const {records , loading , error} = useAppSelector((state => state.Products))
   return ( 
     <Loading error={error} loading={loading}>
-      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 md:gap-12 p-6 md:p-12">
-        {records.map(product => (
-          <Product key={product.id} {...product}/>
-        ))}
-      </div> 
+      <GridList records={records} renderedElementFunction={(record) => (<Product key={record.id} {...record}/>)}/>
     </Loading>
   );
 }

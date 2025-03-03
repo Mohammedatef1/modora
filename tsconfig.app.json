@@ -21,7 +21,7 @@
       "@styles/*": ["src/styles/*"],
       "@utilities/*": ["src/utilities/*"],
       "@feedback/*": ["src/feedback/*"],
-      "@customTypes": ["src/customTypes/*"]
+      "@customTypes/*": ["src/customTypes/*"]
     },
 
     /* Bundler mode */

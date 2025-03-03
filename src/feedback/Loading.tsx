@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import { TLoading } from "src/customTypes/shared"
 
 interface LoadingProps {
@@ -7,10 +6,6 @@ interface LoadingProps {
   children: React.ReactNode
 }
 const Loading = ({error, loading, children}: LoadingProps) => {
-
-  useEffect(() => {
-    console.log(error , loading)
-  }, [error, loading])
   
   if (loading === 'pending'){
     return(
