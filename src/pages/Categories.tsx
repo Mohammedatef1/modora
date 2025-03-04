@@ -1,4 +1,5 @@
 import GridList from "@components/common/GridList";
+import Heading from "@components/common/Heading";
 import Category from "@components/eCommerce/Category";
 import Loading from "@feedback/Loading";
 import actGetCategories from "@store/categories/actions/getAllCategories";
@@ -17,9 +18,12 @@ const Categories = () => {
   },[dispatch, records])
 
   return ( 
-  <Loading error={error} loading={loading}>
-    <GridList records={records} renderedElementFunction={(record) => (<Category {...record} key={record.id}/>)}/>
-  </Loading> );
+    <>
+      <Heading>Categories</Heading>
+      <Loading error={error} loading={loading}>
+        <GridList records={records} renderedElementFunction={(record) => (<Category {...record} key={record.id}/>)}/>
+      </Loading>
+    </> );
 }
  
 export default Categories;

@@ -1,4 +1,5 @@
 import GridList from "@components/common/GridList";
+import Heading from "@components/common/Heading";
 import Product from "@components/eCommerce/Product";
 import Loading from "@feedback/Loading";
 import { useAppDispatch, useAppSelector } from "@store/hooks";
@@ -26,11 +27,13 @@ const Products = () => {
     }
   },[dispatch, params])
 
-
   return ( 
-    <Loading error={error} loading={loading}>
-      <GridList records={productsFullInfo} renderedElementFunction={(record) => (<Product key={record.id} {...record}/>)}/>
-    </Loading>
+    <>
+      <Heading><span className="capitalize" >{params.prefix}</span> Products</Heading>
+      <Loading error={error} loading={loading}>
+        <GridList records={productsFullInfo} renderedElementFunction={(record) => (<Product key={record.id} {...record}/>)}/>
+      </Loading>
+    </>
   );
 }
  
