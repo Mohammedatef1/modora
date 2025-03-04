@@ -3,13 +3,11 @@ import Logo from '../../assets/svg/cart.svg?react'
 
 const ShoppingCart = () => {
   const items = useAppSelector(state => state.cart.items);
-  const valuesArray = Object.values(items)
-  let totalQuantity:number = 0
-  if(valuesArray.length > 0) {
-    totalQuantity = Object.values(items).reduce((previousValue, currentValue)=>{
-      return previousValue + currentValue
-    })
-  }
+
+  const totalQuantity = Object.values(items).reduce((previousValue, currentValue)=>{
+    return previousValue + currentValue
+  }, 0)
+  
 
   return ( 
   <div className='relative'>
