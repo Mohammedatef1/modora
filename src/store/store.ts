@@ -3,7 +3,7 @@ import categoriesSlice from '@store/categories/categoriesSlice'
 import productsSlice from '@store/products/productsSlice'
 import cartSlice from '@store/cart/cartSlice'
 import storage from 'redux-persist/lib/storage'
-import {persistReducer, persistStore} from "redux-persist"
+import {FLUSH, PAUSE, PERSIST, persistReducer, persistStore, PURGE, REGISTER, REHYDRATE} from "redux-persist"
 
 const cartPersistConfig = {
   key: 'cart',
@@ -18,7 +18,12 @@ const rootReducer = combineReducers({
 })
 
 export const store = configureStore({
-  reducer: rootReducer
+  reducer: rootReducer,
+  middleware: getDefaultMiddleWare => getDefaultMiddleWare({
+    serializableCheck: {
+      ignoredActions: [PERSIST, PAUSE, PURGE, FLUSH, REGISTER, REHYDRATE] 
+    }
+  })
 })
 
 export const persistor = persistStore(store)
