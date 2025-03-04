@@ -36,7 +36,7 @@ const Product = memo(({id, img , price , title, max, quantity}: TProduct) => {
     </div>
     <p className="text-lg">{title}</p>
     <p className="text-lg">{price}</p>
-    <p className="text-lg">{hasReachedMaxQuantity ? "You reached the max quantity added to the cart for this item" : `there is ${currentRemainingItems} items remaining` }</p>
+    <p className="text-lg">{hasReachedMaxQuantity ? "You reached the max quantity added to the cart for this item" : `You can add ${currentRemainingItems} more item(s)` }</p>
     <button disabled={isDisabled || hasReachedMaxQuantity} onClick={addToCartHandler} className="bg-primary rounded-md px-6 py-2 text-lg text-background font-semibold transition-opacity disabled:opacity-60">Add to cart</button>
   </div> );
 })
