@@ -22,3 +22,20 @@ body{
     opacity: 1;
   }
 }
+
+.pulseAnimation {
+  animation: pulse 300ms ease;
+  -webkit-animation: pulse 300ms ease;
+}
+
+@keyframes pulse {
+  0%{
+    scale: 1;
+  }
+  50%{
+    scale: 1.3;
+  }
+  100%{
+    scale: 1;
+  }
+}
