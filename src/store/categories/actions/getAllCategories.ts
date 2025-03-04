@@ -5,7 +5,7 @@ import { TCategories } from "src/customTypes/category";
 const actGetCategories = createAsyncThunk('categories/actGetCategories' , async (_,thunkApi)=>{
   const {rejectWithValue} = thunkApi;
   try {
-    const response = await axios.get<TCategories>('http://localhost:5005/categories');
+    const response = await axios.get<TCategories>('/categories');
     return response.data;
   } catch (error) {
     if(axios.isAxiosError(error)){
