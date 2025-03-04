@@ -1,12 +1,10 @@
 import { useAppSelector } from '@store/hooks';
 import Logo from '../../assets/svg/cart.svg?react'
+import { getTotalCart } from '@store/cart/selectors';
 
 const ShoppingCart = () => {
-  const items = useAppSelector(state => state.cart.items);
 
-  const totalQuantity = Object.values(items).reduce((previousValue, currentValue)=>{
-    return previousValue + currentValue
-  }, 0)
+  const totalQuantity = useAppSelector(getTotalCart)
   
 
   return ( 
