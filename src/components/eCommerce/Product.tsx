@@ -7,23 +7,22 @@ import { TProduct } from "src/customTypes/product";
 const Product = ({id, img , price , title}: TProduct) => {
   const dispatch = useAppDispatch()
   const [isDisabled, setIsDisabled] = useState(false);
-  const [isBtnClicked, setIsBtnClicked] = useState(0);
 
   useEffect(() => {
-    if(!isBtnClicked){
+    if(!isDisabled){
       return
     }
-    setIsDisabled(true)
+
     const debounce = setTimeout(() => {
       setIsDisabled(false)
     }, 300);
 
     return () => clearTimeout(debounce)
-  }, [isBtnClicked])
+  }, [isDisabled])
 
   const addToCartHandler = ()=>{
     dispatch(addToCart(id));
-    setIsBtnClicked(prev => prev + 1)
+    setIsDisabled(true)
   }
 
   return (  
