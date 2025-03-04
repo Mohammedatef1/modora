@@ -1,10 +1,10 @@
 import { useAppSelector } from '@store/hooks';
 import Logo from '../../assets/svg/cart.svg?react'
-import { getTotalCart } from '@store/cart/selectors';
+import { getTotalCartQuantity } from '@store/cart/selectors';
 
 const ShoppingCart = () => {
 
-  const totalQuantity = useAppSelector(getTotalCart)
+  const totalQuantity = useAppSelector(getTotalCartQuantity)
   
 
   return ( 
