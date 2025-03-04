@@ -8,18 +8,28 @@ import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 
 const Products = () => {
-  const dispatch = useAppDispatch()
+  const dispatch = useAppDispatch() 
+  const {records , loading , error} = useAppSelector((state => state.products))
+  const {items} = useAppSelector(state => state.cart)
   const params = useParams()
+
+  const productsFullInfo = records.map(el =>({
+      ...el,
+      quantity: items[el.id] || 0
+    })
+  )
+
   useEffect(()=>{
     dispatch(actGetProducts(params.prefix as string))
     return () => {
       dispatch(productsCleanUp())
     }
   },[dispatch, params])
-  const {records , loading , error} = useAppSelector((state => state.products))
+
+
   return ( 
     <Loading error={error} loading={loading}>
-      <GridList records={records} renderedElementFunction={(record) => (<Product key={record.id} {...record}/>)}/>
+      <GridList records={productsFullInfo} renderedElementFunction={(record) => (<Product key={record.id} {...record}/>)}/>
     </Loading>
   );
 }
