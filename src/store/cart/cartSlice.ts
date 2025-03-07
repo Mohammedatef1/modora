@@ -1,14 +1,20 @@
 import { TProduct } from "@customTypes/product";
 import { createSlice } from "@reduxjs/toolkit";
+import actGetFullProductsData from "./actions/actGetFullProductsData";
+import { TLoading } from "@customTypes/shared";
 
 interface ICart {
   items: {[key: number]: number};
   products: TProduct[];
+  loading: TLoading;
+  error: string | null
 }
 
 const initialState:ICart = {
   items: {},
-  products: []
+  products: [],
+  loading: "idle",
+  error: null
 }
 
 const cartsSlice = createSlice({
@@ -23,6 +29,23 @@ const cartsSlice = createSlice({
         state.items[id] = 1
       }
     }
+  },
+  extraReducers: (builder) =>{
+    builder.addCase(actGetFullProductsData.pending , (state) =>{
+      state.loading = 'pending';
+      state.error = null
+    })
+    builder.addCase(actGetFullProductsData.fulfilled , (state, action) =>{
+      state.loading = 'succeeded';
+      state.products = action.payload
+      state.error = null;
+    })
+    builder.addCase(actGetFullProductsData.rejected , (state, action) =>{
+      state.loading = 'rejected';
+      if(action.payload && typeof action.payload === 'string'){
+        state.error = action.payload
+      }
+    })
   }
 })
 
