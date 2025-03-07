@@ -1,6 +1,6 @@
 const CartItem = () => {
   return (
-    <div className="grid grid-cols-6 min-h-[200px] py-5 border-b gap-x-2 border-gray-400 last:border-b-0 items-center">
+    <div className="grid grid-cols-6 min-h-[200px] py-3 border-b gap-x-2 border-gray-400 last:border-b-0 items-center">
       <div className="product-image bg-gray-200 w-full h-full">
         <img src="" className="w-full h-full object-contain" alt="" />
       </div>
