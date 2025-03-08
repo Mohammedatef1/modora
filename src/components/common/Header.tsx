@@ -1,15 +1,14 @@
-import { NavLink, useNavigate } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import ShoppingCart from "@components/eCommerce/ShopingCart";
 
 const Header = () => {
-  const navigate = useNavigate()
   return (
   <header>
     <div className="flex align-center justify-between ">
       <h1 className="logo text-slate-800 font-bold text-2xl">Quick <span className="text-white bg-primary p-2  rounded-md ">Cart</span></h1>
-      <div className="flex items-center gap-x-2 cursor-pointer" onClick={() => {navigate('cart')}}>
+      <div className="flex items-center gap-x-2">
         <ShoppingCart></ShoppingCart>
-        <h3 className="font-semibold">Cart</h3>
+        
       </div>
     </div>
     <div className="flex items-center justify-between my-4 p-4 bg-secondary text-background nav-links-wrapper">
