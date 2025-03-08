@@ -3,10 +3,10 @@ import { changeQuantity, removeFromCart } from "@store/cart/cartSlice";
 import { useAppDispatch } from "@store/hooks";
 import { memo } from "react";
 
-const CartItem = memo(({id, img, price, max, title, quantity} : TProduct) => {
+const CartItem = memo(({id, price, max, title, quantity} : TProduct) => {
   const dispatch = useAppDispatch()
   const maxQuantityArray = Array(max).fill(0).map((_, index) => index + 1);
-  const onChangeHandler = (e) => {
+  const onChangeHandler = (e :  React.ChangeEvent<HTMLSelectElement>) => {
     dispatch(changeQuantity({
       id,
       value: parseInt(e.target.value)
