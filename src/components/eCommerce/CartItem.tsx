@@ -1,8 +1,9 @@
 import { TProduct } from "@customTypes/product"
-import { changeQuantity } from "@store/cart/cartSlice";
+import { changeQuantity, removeFromCart } from "@store/cart/cartSlice";
 import { useAppDispatch } from "@store/hooks";
+import { memo } from "react";
 
-const CartItem = ({id, img, price, max, title, quantity} : TProduct) => {
+const CartItem = memo(({id, img, price, max, title, quantity} : TProduct) => {
   const dispatch = useAppDispatch()
   const maxQuantityArray = Array(max).fill(0).map((_, index) => index + 1);
   const onChangeHandler = (e) => {
@@ -29,10 +30,10 @@ const CartItem = ({id, img, price, max, title, quantity} : TProduct) => {
         </select>
       </div>
       <div>
-        <button onClick={() => {}} className="bg-red-500 px-4 py-2 rounded-sm text-white">Remove</button>
+        <button onClick={() => {dispatch(removeFromCart(id))}} className="bg-red-500 px-4 py-2 rounded-sm text-white">Remove</button>
       </div>
     </div>
   )
-}
+})
 
 export default CartItem

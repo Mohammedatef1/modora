@@ -4,7 +4,7 @@ import actGetFullProductsData from "./actions/actGetFullProductsData";
 import { TLoading } from "@customTypes/shared";
 
 interface ICart {
-  items: {[key: number]: number};
+  items: {[key: string]: number};
   products: TProduct[];
   loading: TLoading;
   error: string | null
@@ -33,6 +33,10 @@ const cartsSlice = createSlice({
       const {id} = action.payload
       const {value} = action.payload
       state.items[id] = value;
+    },
+    removeFromCart : (state, action) =>{
+      delete state.items[action.payload]
+      state.products =  state.products.filter((el) => el.id != action.payload)
     }
   },
   extraReducers: (builder) =>{
@@ -54,5 +58,5 @@ const cartsSlice = createSlice({
   }
 })
 
-export const {addToCart, changeQuantity} = cartsSlice.actions
+export const {addToCart, changeQuantity, removeFromCart} = cartsSlice.actions
 export default cartsSlice.reducer
