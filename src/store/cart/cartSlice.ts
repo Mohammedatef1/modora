@@ -28,6 +28,11 @@ const cartsSlice = createSlice({
       }else{
         state.items[id] = 1
       }
+    },
+    changeQuantity: (state, action) => {
+      const {id} = action.payload
+      const {value} = action.payload
+      state.items[id] = value;
     }
   },
   extraReducers: (builder) =>{
@@ -49,5 +54,5 @@ const cartsSlice = createSlice({
   }
 })
 
-export const {addToCart} = cartsSlice.actions
+export const {addToCart, changeQuantity} = cartsSlice.actions
 export default cartsSlice.reducer
