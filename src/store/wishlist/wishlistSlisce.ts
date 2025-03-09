@@ -1,16 +1,19 @@
 import { TLoading } from "@customTypes/shared";
-// import { TWishlist } from "@customTypes/wishlist";
 import { createSlice } from "@reduxjs/toolkit";
 import actLikeToggle from "./actions/actLikeToggle";
+import actGetWishlistProducts from "./actions/actGetWishlistProducts";
+import { TProduct } from "@customTypes/product";
 
 interface IWishlist {
   productsIds: number[];
+  products: TProduct[];
   loading: TLoading;
   error : null | string
 }
 
 const initialState: IWishlist = {
   productsIds: [],
+  products: [],
   loading: "idle",
   error: null
 }
@@ -34,6 +37,21 @@ const wishlistSlice = createSlice({
       }
     })
     builder.addCase(actLikeToggle.rejected , (state, action) => {
+      state.loading = 'rejected';
+      if (action.payload && typeof action.payload === 'string'){
+        state.error = action.payload;
+      }
+    })
+    builder.addCase(actGetWishlistProducts.pending , (state) => {
+      state.loading= "pending";
+      state.error = null;
+    })
+    builder.addCase(actGetWishlistProducts.fulfilled , (state, action) => {
+      state.loading = "fulfilled";
+      state.error = null;
+      state.products = action.payload;
+    })
+    builder.addCase(actGetWishlistProducts.rejected , (state, action) => {
       state.loading = 'rejected';
       if (action.payload && typeof action.payload === 'string'){
         state.error = action.payload;
