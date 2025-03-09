@@ -2,6 +2,7 @@ import { addToCart } from "@store/cart/cartSlice";
 import { useAppDispatch } from "@store/hooks";
 import { memo, useEffect, useState } from "react";
 import { TProduct } from "src/customTypes/product";
+import Like from '@assets/svg/like.svg?react'
 
 
 const Product = memo(({id, img , price , title, max, quantity}: TProduct) => {
@@ -31,8 +32,11 @@ const Product = memo(({id, img , price , title, max, quantity}: TProduct) => {
 
   return (  
   <div product-id={`${id}`} className="flex flex-col items-center gap-4">
-    <div className="aspect-[1/1.2] w-full">
+    <div className="aspect-[1/1.2] w-full relative">
       <img src={img} loading="lazy" alt={title} className="w-full h-full" />
+      <div className="absolute top-2 right-2 w-7 h-7 cursor-pointer bg-gray-200 rounded-full flex items-center justify-center hover:shadow-md transition">
+        <Like/>
+      </div>
     </div>
     <p className="text-lg">{title}</p>
     <p className="text-lg">{price.toFixed(2)} EGP</p>
