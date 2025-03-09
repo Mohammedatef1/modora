@@ -12,8 +12,6 @@ const Product = memo(({id, img , price , title, max, quantity, isLiked}: TProduc
   const [isDisabled, setIsDisabled] = useState(false);
   const [isLoading, setIsLoading] = useState(false)
 
-  console.log(quantity)
-
   const currentRemainingItems = max - (quantity ?? 0 );
   const hasReachedMaxQuantity = currentRemainingItems <= 0 ? true : false;
 

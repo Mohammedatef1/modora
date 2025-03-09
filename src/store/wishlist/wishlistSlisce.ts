@@ -21,7 +21,11 @@ const initialState: IWishlist = {
 const wishlistSlice = createSlice({
   name: "wishlist",
   initialState,
-  reducers: {},
+  reducers: {
+    productsCleanUp: (state) => {
+      state.products = []
+    }
+  },
   extraReducers: (builder) => {
     builder.addCase(actLikeToggle.pending , (state) => {
       state.loading = 'pending';
@@ -60,4 +64,5 @@ const wishlistSlice = createSlice({
   }
 })
 
+export const {productsCleanUp} =  wishlistSlice.actions
 export default wishlistSlice.reducer

@@ -3,6 +3,7 @@ import Heading from "@components/common/Heading"
 import Product from "@components/eCommerce/Product"
 import { useAppDispatch, useAppSelector } from "@store/hooks"
 import actGetWishlistProducts from "@store/wishlist/actions/actGetWishlistProducts"
+import { productsCleanUp } from "@store/wishlist/wishlistSlisce"
 import { useEffect } from "react"
 
 const Wishlist = () => {
@@ -13,6 +14,8 @@ const Wishlist = () => {
   const productsFullInfo = products.map(el =>  ({...el , isLiked : productsIds.includes(el.id), quantity: items[el.id] }))
   useEffect(() => {
     dispatch(actGetWishlistProducts())
+
+    return () => {dispatch(productsCleanUp())}
   }, [dispatch])
   return (
   <>
