@@ -12,11 +12,13 @@ const Products = () => {
   const dispatch = useAppDispatch() 
   const {records , loading , error} = useAppSelector((state => state.products))
   const {items} = useAppSelector(state => state.cart)
+  const likedProducts = useAppSelector(state => state.wishlist.productsIds)
   const params = useParams()
 
   const productsFullInfo = records.map(el =>({
       ...el,
-      quantity: items[el.id] || 0
+      quantity: items[el.id] || 0,
+      isLiked : likedProducts.includes(el.id)
     })
   )
 

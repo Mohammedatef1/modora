@@ -1,7 +1,7 @@
 import { TProduct } from "@customTypes/product";
+import { TLoading } from "@customTypes/shared";
 import { createSlice } from "@reduxjs/toolkit";
 import actGetFullProductsData from "./actions/actGetFullProductsData";
-import { TLoading } from "@customTypes/shared";
 
 interface ICart {
   items: {[key: string]: number};
@@ -46,7 +46,7 @@ const cartsSlice = createSlice({
       state.error = null
     })
     builder.addCase(actGetFullProductsData.fulfilled , (state, action) =>{
-      state.loading = 'succeeded';
+      state.loading = 'fulfilled';
       state.products = action.payload
       state.error = null;
     })

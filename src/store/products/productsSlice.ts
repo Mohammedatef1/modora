@@ -28,7 +28,7 @@ const ProductsSlice = createSlice({
       state.loading = "pending"
     })
     builder.addCase(actGetProducts.fulfilled , (state, action)=>{
-      state.loading = "succeeded"
+      state.loading = "fulfilled"
       state.records = Array.isArray(action.payload) ? action.payload : [action.payload]
     })
     builder.addCase(actGetProducts.rejected , (state, action) => {

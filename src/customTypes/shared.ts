@@ -1,1 +1,1 @@
-export type TLoading =  'idle'| 'succeeded' | 'pending' | 'rejected'
+export type TLoading =  'idle'| 'fulfilled' | 'pending' | 'rejected'

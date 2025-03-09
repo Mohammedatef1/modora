@@ -1,13 +1,10 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { RootState } from "@store/store";
 import axios from "axios";
 
 const actLikeToggle = createAsyncThunk('wishlist/actLikeToggle' , async(id:number , thunkAPI) => {
-  const {rejectWithValue , getState} = thunkAPI
-  const {wishlist} = getState() as RootState
-  const {productsIds} = wishlist
+  const {rejectWithValue } = thunkAPI
   try {
-    const isRecordExist = await axios.get(`/wishlist?userId=1&ProductId=${id}`)
+    const isRecordExist = await axios.get(`/wishlist?userId=1&productId=${id}`)
     if(isRecordExist.data.length > 0){
       axios.delete(`/wishlist/${isRecordExist.data[0].id}`)
       return {type: 'delete' , productId : id}

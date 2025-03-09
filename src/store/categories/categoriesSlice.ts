@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
-import actGetCategories from "./actions/getAllCategories";
 import { TCategories } from "src/customTypes/category";
 import { TLoading } from "src/customTypes/shared";
+import actGetCategories from "./actions/getAllCategories";
 
 interface CategoriesProps{
   records : TCategories[],
@@ -25,7 +25,7 @@ const categoriesSlice = createSlice({
       state.error = null
     });
     builder.addCase(actGetCategories.fulfilled, (state , action)=>{
-      state.loading = 'succeeded';
+      state.loading = 'fulfilled';
       state.records = Array.isArray(action.payload) ? action.payload : [action.payload]  
     })
     builder.addCase(actGetCategories.rejected, (state, action)=>{
