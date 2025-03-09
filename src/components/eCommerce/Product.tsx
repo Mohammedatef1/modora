@@ -3,6 +3,7 @@ import { useAppDispatch } from "@store/hooks";
 import { memo, useEffect, useState } from "react";
 import { TProduct } from "src/customTypes/product";
 import Like from '@assets/svg/like.svg?react'
+import actLikeToggle from "@store/wishlist/actions/actLikeToggle";
 
 
 const Product = memo(({id, img , price , title, max, quantity}: TProduct) => {
@@ -30,11 +31,15 @@ const Product = memo(({id, img , price , title, max, quantity}: TProduct) => {
     setIsDisabled(true)
   }
 
+  const likeToggleHandler = () => {
+    dispatch(actLikeToggle(id))
+  }
+
   return (  
   <div product-id={`${id}`} className="flex flex-col items-center gap-4">
     <div className="aspect-[1/1.2] w-full relative">
       <img src={img} loading="lazy" alt={title} className="w-full h-full" />
-      <div className="absolute top-2 right-2 w-7 h-7 cursor-pointer bg-gray-200 rounded-full flex items-center justify-center hover:shadow-md transition">
+      <div className="absolute top-2 right-2 w-7 h-7 cursor-pointer bg-gray-200 rounded-full flex items-center justify-center hover:shadow-md transition" onClick={likeToggleHandler}>
         <Like/>
       </div>
     </div>
