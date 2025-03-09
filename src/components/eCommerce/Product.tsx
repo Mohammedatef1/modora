@@ -10,6 +10,7 @@ import actLikeToggle from "@store/wishlist/actions/actLikeToggle";
 const Product = memo(({id, img , price , title, max, quantity, isLiked}: TProduct) => {
   const dispatch = useAppDispatch()
   const [isDisabled, setIsDisabled] = useState(false);
+  const [isLoading, setIsLoading] = useState(false)
 
   const currentRemainingItems = max - (quantity ?? 0 );
   const hasReachedMaxQuantity = currentRemainingItems <= 0 ? true : false;
@@ -33,16 +34,17 @@ const Product = memo(({id, img , price , title, max, quantity, isLiked}: TProduc
   }
 
   const likeToggleHandler = () => {
-    dispatch(actLikeToggle(id))
+    setIsLoading(true)
+    dispatch(actLikeToggle(id)).finally(() => setIsLoading(false))
   }
 
   return (  
   <div product-id={`${id}`} className="flex flex-col items-center gap-4">
     <div className="aspect-[1/1.2] w-full relative">
       <img src={img} loading="lazy" alt={title} className="w-full h-full" />
-      <div className="absolute top-2 right-2 w-7 h-7 cursor-pointer bg-gray-200 rounded-full flex items-center justify-center hover:shadow-md transition" onClick={likeToggleHandler}>
-        { isLiked ? <LikeFill/> : <Like/>}
-      </div>
+      <button className="absolute top-2 right-2 w-7 h-7 cursor-pointer bg-gray-200 rounded-full flex items-center justify-center hover:shadow-md transition disabled:opacity-60" disabled={isLoading} onClick={likeToggleHandler}>
+        { isLiked ? <LikeFill/> : <Like/> }
+      </button>
     </div>
     <p className="text-lg">{title}</p>
     <p className="text-lg">{price.toFixed(2)} EGP</p>

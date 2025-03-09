@@ -1,4 +1,4 @@
-// import { useAppSelector } from '@store/hooks';
+import { useAppSelector } from '@store/hooks';
 import Wishlist from '../../assets/svg/wishlist.svg?react'
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom';
 const HeaderWishlist = () => {
   const navigate = useNavigate()
 
-  const totalQuantity = 0
+  const totalQuantity = useAppSelector(state => state.wishlist.productsIds).length || 0
 
   const [isAnimated, setIsAnimated] = useState(false)
   useEffect(() =>{
