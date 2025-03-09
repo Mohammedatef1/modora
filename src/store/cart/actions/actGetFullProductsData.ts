@@ -17,7 +17,7 @@ const actGetFullProductsData =  createAsyncThunk('cart/actGetFullProductsData' ,
     return products
   } catch (error) {
     if(axios.isAxiosError(error)){
-      return rejectWithValue(error.message)
+      return rejectWithValue(error.message || error.response?.data.message)
     }else{
       return rejectWithValue("An unexpected error")
     }
