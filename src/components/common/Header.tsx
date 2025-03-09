@@ -1,5 +1,6 @@
 import { NavLink } from "react-router-dom";
-import ShoppingCart from "@components/eCommerce/ShopingCart";
+import HeaderShoppingCart from "@components/eCommerce/ShopingCart";
+import HeaderWishlist from "@components/eCommerce/Wishlist";
 
 const Header = () => {
   return (
@@ -7,8 +8,8 @@ const Header = () => {
     <div className="flex align-center justify-between ">
       <h1 className="logo text-slate-800 font-bold text-2xl">Quick <span className="text-white bg-primary p-2  rounded-md ">Cart</span></h1>
       <div className="flex items-center gap-x-2">
-        <ShoppingCart></ShoppingCart>
-        
+        <HeaderWishlist></HeaderWishlist>
+        <HeaderShoppingCart></HeaderShoppingCart>
       </div>
     </div>
     <div className="flex items-center justify-between my-4 p-4 bg-secondary text-background nav-links-wrapper">

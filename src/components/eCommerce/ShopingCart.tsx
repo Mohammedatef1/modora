@@ -4,7 +4,7 @@ import { getTotalCartQuantity } from '@store/cart/selectors';
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-const ShoppingCart = () => {
+const HeaderShoppingCart = () => {
   const navigate = useNavigate()
 
   const totalQuantity = useAppSelector(getTotalCartQuantity)
@@ -25,11 +25,11 @@ const ShoppingCart = () => {
   <div className='flex items-center gap-x-2 cursor-pointer' onClick={() => {navigate('cart')}}>
     <div className='relative'>
       <Cart></Cart>
-      <div className={` ${isAnimated? 'pulseAnimation' : ''} p-1 bg-primary rounded-full aspect-square absolute -top-3 -right-3 flex items-center justify-center h-6 text-sm`}>{totalQuantity}</div>
+      { totalQuantity > 0 && <div className={` ${isAnimated? 'pulseAnimation' : ''} p-1 bg-primary rounded-full aspect-square absolute -top-3 -right-3 flex items-center justify-center h-6 text-sm`}>{totalQuantity}</div> }
     </div>
     <h3 className="font-semibold">Cart</h3>
   </div>
  );
 }
  
-export default ShoppingCart;
+export default HeaderShoppingCart;
