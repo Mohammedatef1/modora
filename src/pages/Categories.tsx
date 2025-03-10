@@ -3,6 +3,7 @@ import Heading from "@components/common/Heading";
 import Category from "@components/eCommerce/Category";
 import Loading from "@feedback/Loading";
 import actGetCategories from "@store/categories/actions/getAllCategories";
+import { cleanUpCategories } from "@store/categories/categoriesSlice";
 import { useAppDispatch, useAppSelector } from "@store/hooks";
 import { useEffect } from "react";
 
@@ -12,10 +13,9 @@ const Categories = () => {
   
 
   useEffect(()=>{
-    if(records.length == 0){
-      dispatch(actGetCategories())
-    }
-  },[dispatch, records])
+    dispatch(actGetCategories())
+    return () => {dispatch(cleanUpCategories())} 
+  },[dispatch])
 
   return ( 
     <>

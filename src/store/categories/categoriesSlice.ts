@@ -18,7 +18,11 @@ const initialState : CategoriesProps = {
 const categoriesSlice = createSlice({
   name: 'categories',
   initialState,
-  reducers : {},
+  reducers : {
+    cleanUpCategories : (state) => {
+      state.records = []
+    }
+  },
   extraReducers : (builder)=>{
     builder.addCase(actGetCategories.pending , (state)=>{
       state.loading = 'pending';
@@ -37,4 +41,5 @@ const categoriesSlice = createSlice({
   }
 })
 
+export const {cleanUpCategories} = categoriesSlice.actions
 export default categoriesSlice.reducer
