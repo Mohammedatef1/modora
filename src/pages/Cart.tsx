@@ -4,6 +4,7 @@ import CartItem from "@components/eCommerce/CartItem"
 import CartTotal from "@components/eCommerce/CartTotal"
 import Loading from "@feedback/Loading"
 import actGetFullProductsData from "@store/cart/actions/actGetFullProductsData"
+import { cleanUpCartProducts } from "@store/cart/cartSlice"
 import { useAppDispatch, useAppSelector } from "@store/hooks"
 import { useEffect } from "react"
 
@@ -13,6 +14,8 @@ const Cart = () => {
   const {products} = cart
   useEffect(() => {
     dispatch(actGetFullProductsData())
+
+    return () => {dispatch(cleanUpCartProducts())}
   }, [dispatch])
   return (
     <>
