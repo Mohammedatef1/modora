@@ -7,7 +7,7 @@ const useWishlist = () => {
   const dispatch = useAppDispatch()
   const wishlist = useAppSelector(state => state.wishlist)
   const {items} = useAppSelector(state => state.cart)
-  const {productsIds , products} = wishlist
+  const {productsIds , products, error, loading} = wishlist
   const productsFullInfo = products.map(el =>  ({...el , isLiked : productsIds.includes(el.id), quantity: items[el.id] }))
   useEffect(() => {
     dispatch(actGetWishlistProducts())
@@ -15,7 +15,7 @@ const useWishlist = () => {
     return () => {dispatch(productsCleanUp())}
   }, [dispatch])
 
-  return {productsFullInfo}
+  return {productsFullInfo, error, loading}
 }
 
 export default useWishlist

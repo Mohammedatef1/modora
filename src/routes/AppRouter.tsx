@@ -4,9 +4,9 @@ const Categories = lazy(() => import("@pages/Categories"))
 const AboutUs = lazy(() => import("@pages/AboutUs"))
 const MainLayout = lazy(() => import("@layouts/MainLayout"))
 const Home = lazy(() => import("@pages/Home"))
-const Products = lazy(() => import("@pages/Home"))
-const Error = lazy(() => import("@pages/Products"))
-const Cart = lazy(() => import( "@pages/Error"))
+const Products = lazy(() => import("@pages/Products"))
+const Error = lazy(() => import("@pages/Error"))
+const Cart = lazy(() => import( "@pages/Cart"))
 const Wishlist = lazy(() => import("@pages/Wishlist"))
 
 const router = createBrowserRouter([
