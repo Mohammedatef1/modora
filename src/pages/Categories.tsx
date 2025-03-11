@@ -19,7 +19,7 @@ const Categories = () => {
 
   return ( 
     <>
-      <Heading>Categories</Heading>
+      <Heading title="Categories" />
       <Loading error={error} loading={loading}>
         <GridList records={records} renderedElementFunction={(record) => (<Category {...record} key={record.id}/>)}/>
       </Loading>

@@ -19,7 +19,7 @@ const Cart = () => {
   }, [dispatch])
   return (
     <>
-      <Heading>Cart</Heading>
+      <Heading title="Cart" />
       <Loading error={cart.error} loading={cart.loading}><ListCartItems records={products} renderedItemFunction={(product) => (<CartItem key={product.id} {...product}></CartItem>)}></ListCartItems></Loading>
       <CartTotal></CartTotal>
     </>

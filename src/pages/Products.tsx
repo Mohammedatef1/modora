@@ -31,7 +31,7 @@ const Products = () => {
 
   return ( 
     <>
-      <Heading><span className="capitalize" >{params.prefix}</span> Products</Heading>
+      <Heading title={`${params.prefix?.charAt(0).toUpperCase()}${params.prefix?.slice(1)} Products`} />
       <Loading error={error} loading={loading}>
         <GridList records={productsFullInfo} renderedElementFunction={(record) => (<Product key={record.id} {...record}/>)}/>
       </Loading>
