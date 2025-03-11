@@ -1,30 +1,43 @@
+import { lazy, Suspense } from 'react'
 import AboutUs from '@pages/AboutUs'
 import Categories from '@pages/Categories'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
-import Mainlayout from '@layouts/MainLayout'
-import Home from '@pages/Home'
-import Products from '@pages/Products'
-import Error from '@pages/Error'
-import Cart from '@pages/Cart'
-import Wishlist from '@pages/Wishlist'
+const MainLayout = lazy(() => import("@layouts/MainLayout"))
+const Home = lazy(() => import("@pages/Home"))
+const Products = lazy(() => import("@pages/Home"))
+const Error = lazy(() => import("@pages/Products"))
+const Cart = lazy(() => import( "@pages/Error"))
+const Wishlist = lazy(() => import("@pages/Wishlist"))
 
 const router = createBrowserRouter([
   {
       path: "/",
-      element: <Mainlayout/>,
+      element: 
+        (<Suspense fallback={<p>Loading please wait...</p>}>
+          <MainLayout/>
+        </Suspense>),
       errorElement: <Error/>,
       children: [
           {
               index: true,
-              element: <Home/>
+              element: 
+                (<Suspense fallback={<p>Loading please wait...</p>}>
+                  <Home/>
+                </Suspense>)
           },
           {
               path: "categories",
-              element: <Categories/>
+              element: 
+                (<Suspense fallback={<p>Loading please wait...</p>}>
+                  <Categories/>
+                </Suspense>)
           },
           {
               path: "categories/products/:prefix",
-              element: <Products/>,
+              element: 
+                (<Suspense fallback={<p>Loading please wait...</p>}>
+                  <Products/>
+                </Suspense>),
               loader: ( { params } )=> {
                 if (typeof params.prefix !== "string" || !(/^[A-Za-z]+$/).test(params.prefix)){
                     throw new Response("Bad Request", {
@@ -37,15 +50,24 @@ const router = createBrowserRouter([
           },
           {
               path: "about-us",
-              element: <AboutUs/>
+              element: 
+                (<Suspense fallback={<p>Loading please wait...</p>}>
+                  <AboutUs/>
+                </Suspense>)
           },
           {
             path: 'cart',
-            element: <Cart/>
+            element:  
+              (<Suspense fallback={<p>Loading please wait...</p>}>
+                <Cart/>
+              </Suspense>)
           },
           {
             path: 'wishlist',
-            element: <Wishlist/>
+            element:  
+              (<Suspense fallback={<p>Loading please wait...</p>}>
+                <Wishlist/>
+              </Suspense>)
           }
       ]
   }
