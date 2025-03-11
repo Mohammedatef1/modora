@@ -1,16 +1,12 @@
 import { NavLink } from "react-router-dom";
-import HeaderShoppingCart from "@components/eCommerce/ShopingCart";
-import HeaderWishlist from "@components/eCommerce/Wishlist";
+import HeaderLeftSide from "./HeaderLeftSide";
 
 const Header = () => {
   return (
   <header>
     <div className="flex align-center justify-between ">
       <h1 className="logo text-slate-800 font-bold text-2xl">Quick <span className="text-white bg-primary p-2  rounded-md ">Cart</span></h1>
-      <div className="flex items-center gap-x-2">
-        <HeaderWishlist></HeaderWishlist>
-        <HeaderShoppingCart></HeaderShoppingCart>
-      </div>
+      <HeaderLeftSide/>
     </div>
     <div className="flex items-center justify-between my-4 p-4 bg-secondary text-background nav-links-wrapper">
       <nav className="flex items-center gap-3">
