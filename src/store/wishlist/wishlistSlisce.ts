@@ -27,23 +27,11 @@ const wishlistSlice = createSlice({
     }
   },
   extraReducers: (builder) => {
-    builder.addCase(actLikeToggle.pending , (state) => {
-      state.loading = 'pending';
-      state.error = null
-    })
     builder.addCase(actLikeToggle.fulfilled , (state, action) => {
-      state.loading = 'fulfilled';
-      state.error = null;
       if(action.payload.type === 'add') {
         state.productsIds.push(action.payload.productId)
       }else {
         state.productsIds = state.productsIds.filter( el => el != action.payload.productId)
-      }
-    })
-    builder.addCase(actLikeToggle.rejected , (state, action) => {
-      state.loading = 'rejected';
-      if (action.payload && typeof action.payload === 'string'){
-        state.error = action.payload;
       }
     })
     builder.addCase(actGetWishlistProducts.pending , (state) => {

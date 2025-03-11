@@ -19,9 +19,10 @@ const useProducts = () => {
   )
 
   useEffect(()=>{
-    dispatch(actGetProducts(params.prefix as string))
+    const response = dispatch(actGetProducts(params.prefix as string))
     return () => {
-      dispatch(productsCleanUp())
+      dispatch(productsCleanUp());
+      response.abort()
     }
   },[dispatch, params])
 

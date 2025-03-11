@@ -7,9 +7,12 @@ const useCart = () => {
   const dispatch = useAppDispatch();
   const {products, loading, error} = useAppSelector(state => state.cart)
   useEffect(() => {
-    dispatch(actGetFullProductsData())
+    const response = dispatch(actGetFullProductsData())
 
-    return () => {dispatch(cleanUpCartProducts())}
+    return () => {
+      dispatch(cleanUpCartProducts());
+      response.abort()
+    }
   }, [dispatch])
 
   return {products, loading, error}
