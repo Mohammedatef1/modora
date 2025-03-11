@@ -1,7 +1,7 @@
 import { lazy, Suspense } from 'react'
-import AboutUs from '@pages/AboutUs'
-import Categories from '@pages/Categories'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
+const Categories = lazy(() => import("@pages/Categories"))
+const AboutUs = lazy(() => import("@pages/AboutUs"))
 const MainLayout = lazy(() => import("@layouts/MainLayout"))
 const Home = lazy(() => import("@pages/Home"))
 const Products = lazy(() => import("@pages/Home"))
