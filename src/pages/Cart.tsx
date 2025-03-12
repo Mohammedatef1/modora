@@ -10,7 +10,7 @@ const Cart = () => {
   return (
     <>
       <Heading title="Cart" />
-      <Loading error={error} loading={loading}><ListCartItems records={products} renderedItemFunction={(product) => (<CartItem key={product.id} {...product}></CartItem>)}></ListCartItems></Loading>
+      <Loading error={error} type="cart" loading={loading}><ListCartItems records={products} renderedItemFunction={(product) => (<CartItem key={product.id} {...product}></CartItem>)}></ListCartItems></Loading>
       <CartTotal></CartTotal>
     </>
   )

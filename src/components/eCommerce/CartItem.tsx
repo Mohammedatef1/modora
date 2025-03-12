@@ -29,7 +29,7 @@ const CartItem = memo(({id, price, max, title, quantity} : TProduct) => {
           {maxQuantityArray.map((el) => (<option key={el} value={el}>{el}</option>))}
         </select>
       </div>
-      <div>
+      <div className="flex flex-col items-center">
         <button onClick={() => {dispatch(removeFromCart(id))}} className="bg-red-500 px-4 py-2 rounded-sm text-white">Remove</button>
       </div>
     </div>

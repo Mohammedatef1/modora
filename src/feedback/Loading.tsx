@@ -1,15 +1,28 @@
-import { TLoading } from "src/customTypes/shared"
+import { TLoading } from "src/customTypes/shared";
+import CategorySkeleton from "./skeletons/CategorySkeleton";
+import CartSkeleton from "./skeletons/CartSkeleton";
+import ProductSkeleton from "./skeletons/ProductSkeleton";
 
 interface LoadingProps {
   loading: TLoading;
   error: null | string;
-  children: React.ReactNode
+  children: React.ReactNode;
+  type?: keyof typeof loadingSkeleton;
 }
-const Loading = ({error, loading, children}: LoadingProps) => {
+
+const loadingSkeleton = {
+  category: CategorySkeleton,
+  product: ProductSkeleton,
+  cart: CartSkeleton
+} 
+
+
+const Loading = ({error, loading, children, type = "category"}: LoadingProps) => {
   
   if (loading === 'pending'){
+    const Skeleton = loadingSkeleton[type]
     return(
-      <p>Loading...</p>
+      <Skeleton/>
     )
   }
   

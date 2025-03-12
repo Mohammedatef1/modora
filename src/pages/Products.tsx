@@ -10,7 +10,7 @@ const Products = () => {
   return ( 
     <>
       <Heading title={`${params.prefix?.charAt(0).toUpperCase()}${params.prefix?.slice(1)} Products`} />
-      <Loading error={error} loading={loading}>
+      <Loading type="product" error={error} loading={loading}>
         <GridList records={productsFullInfo} renderedElementFunction={(record) => (<Product key={record.id} {...record}/>)}/>
       </Loading>
     </>
