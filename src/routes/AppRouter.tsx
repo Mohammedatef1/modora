@@ -1,11 +1,11 @@
 import { lazy, Suspense } from 'react'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
+import Error from "@pages/Error"
 const Categories = lazy(() => import("@pages/Categories"))
 const AboutUs = lazy(() => import("@pages/AboutUs"))
 const MainLayout = lazy(() => import("@layouts/MainLayout"))
 const Home = lazy(() => import("@pages/Home"))
 const Products = lazy(() => import("@pages/Products"))
-const Error = lazy(() => import("@pages/Error"))
 const Cart = lazy(() => import( "@pages/Cart"))
 const Wishlist = lazy(() => import("@pages/Wishlist"))
 
