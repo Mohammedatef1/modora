@@ -2,6 +2,7 @@ import { TLoading } from "src/customTypes/shared";
 import CategorySkeleton from "./skeletons/CategorySkeleton";
 import CartSkeleton from "./skeletons/CartSkeleton";
 import ProductSkeleton from "./skeletons/ProductSkeleton";
+import LottieHandler from "./LottieHandler";
 
 interface LoadingProps {
   loading: TLoading;
@@ -28,7 +29,7 @@ const Loading = ({error, loading, children, type = "category"}: LoadingProps) =>
   
   if (loading === 'rejected'){
     return(
-      <p>{error}</p>
+      <LottieHandler type="error" message={error as string} className="max-w-sm text-lg md:text-2xl m-auto text-red-600"/>
     )
   }
 
