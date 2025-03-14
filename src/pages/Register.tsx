@@ -6,7 +6,7 @@ import { signUpSchema, signUpType } from "src/validations/signUpSchema"
 const Register = () => {
   const {register , handleSubmit, formState: {errors} } = useForm<signUpType>({
     resolver: zodResolver(signUpSchema),
-    mode: "onBlur"
+    mode: "all"
   })
 
   const submitHandler : SubmitHandler<signUpType> = (data) => {
