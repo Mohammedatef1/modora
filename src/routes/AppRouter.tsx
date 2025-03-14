@@ -1,6 +1,8 @@
 import { lazy, Suspense } from 'react'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import Error from "@pages/Error"
+import Register from '@pages/Register'
+import Login from '@pages/Login'
 const Categories = lazy(() => import("@pages/Categories"))
 const AboutUs = lazy(() => import("@pages/AboutUs"))
 const MainLayout = lazy(() => import("@layouts/MainLayout"))
@@ -67,6 +69,20 @@ const router = createBrowserRouter([
             element:  
               (<Suspense fallback={<p>Loading please wait...</p>}>
                 <Wishlist/>
+              </Suspense>)
+          },
+          {
+            path: 'register',
+            element:  
+              (<Suspense fallback={<p>Loading please wait...</p>}>
+                <Register/>
+              </Suspense>)
+          },
+          {
+            path: 'login',
+            element:  
+              (<Suspense fallback={<p>Loading please wait...</p>}>
+                <Login/>
               </Suspense>)
           }
       ]

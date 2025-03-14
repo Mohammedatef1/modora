@@ -10,6 +10,7 @@ const Error = () => {
     responseCode = error.status;
     responseMessage = error.statusText;
   } else{
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     responseCode = 404;
     responseMessage = "Sorry, we were unable to find that page"
   }
