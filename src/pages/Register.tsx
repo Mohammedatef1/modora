@@ -7,7 +7,7 @@ import Input from "@components/form/Input"
 const Register = () => {
   const {register , handleSubmit, formState: {errors} } = useForm<signUpType>({
     resolver: zodResolver(signUpSchema),
-    mode: "all"
+    mode: "onTouched"
   })
 
   const submitHandler : SubmitHandler<signUpType> = (data) => {
