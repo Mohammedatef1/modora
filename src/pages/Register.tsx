@@ -7,14 +7,14 @@ import useCheckEmailAvailability from "@hooks/useCheckEmailAvailability"
 import { useAppDispatch, useAppSelector } from "@store/hooks"
 import actRegister from "@store/auth/actions/actRegister"
 import { useNavigate } from "react-router-dom"
-import { useState } from "react"
+import { useEffect } from "react"
+import { cleanUpAuth } from "@store/auth/authSlice"
 
 const Register = () => {
   const {previousEmail, emailAvailabilityStatus, checkAvailability, resetPreviousEmail} = useCheckEmailAvailability()
   const dispatch = useAppDispatch()
   const navigate = useNavigate()
   const {error, loading} = useAppSelector(state => state.auth)
-  const [isTouched, setIsTouched] = useState(false)
 
   const {register , handleSubmit, formState: {errors}, getFieldState, trigger } = useForm<signUpType>({
     resolver: zodResolver(signUpSchema),
@@ -25,10 +25,12 @@ const Register = () => {
     const {email, firstName, lastName, password} = data
     await dispatch(actRegister({email, firstName, lastName, password})).unwrap().then(() => {
       navigate("/login")
-    }).finally(() => {
-      setIsTouched(true)
     })
   }
+
+  useEffect(() => {
+    return () => {dispatch(cleanUpAuth())}
+  }, [dispatch])
   
   const errorHandler = () => {
     console.log(errors)
@@ -59,7 +61,7 @@ const Register = () => {
           <Input error={errors.password?.message} label="Password" name="password" register={register} type="password"></Input>
           <Input error={errors.repeatPassword?.message} label="Repeat Password" name="repeatPassword" register={register} type="password"></Input>
           <button type="submit" className="w-fit px-4 py-1.5 bg-primary text-background font-semibold rounded-sm mt-2 disabled:opacity-75 transition-opacity" disabled={emailAvailabilityStatus === "checking" || emailAvailabilityStatus === "notAvailable" || emailAvailabilityStatus === "error" || loading === "pending" ? true: false}>Register</button>
-          {error && isTouched && <p className="text-red-500 text-sm">{error}</p>}
+          {error && <p className="text-red-500 text-sm">{error}</p>}
         </form>
       </div>    
     </>
