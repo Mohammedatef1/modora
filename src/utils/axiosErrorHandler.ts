@@ -2,7 +2,7 @@ import { isAxiosError } from "axios"
 
 const axiosErrorHandler = (error: unknown) => {
   if(isAxiosError(error)){
-    return error.message || error.response?.data.message
+    return error.response?.data || error.message 
   }else{
     return "An unexpected error!"
   }
