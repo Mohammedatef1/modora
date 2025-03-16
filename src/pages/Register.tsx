@@ -5,7 +5,7 @@ import { signUpSchema, signUpType } from "src/validations/signUpSchema"
 import Input from "@components/form/Input"
 import useCheckEmailAvailability from "@hooks/useCheckEmailAvailability"
 import { useAppDispatch, useAppSelector } from "@store/hooks"
-import actRegister from "@store/register/actions/actRegister"
+import actRegister from "@store/auth/actions/actRegister"
 import { useNavigate } from "react-router-dom"
 import { useState } from "react"
 
@@ -13,7 +13,7 @@ const Register = () => {
   const {previousEmail, emailAvailabilityStatus, checkAvailability, resetPreviousEmail} = useCheckEmailAvailability()
   const dispatch = useAppDispatch()
   const navigate = useNavigate()
-  const {error, loading} = useAppSelector(state => state.register)
+  const {error, loading} = useAppSelector(state => state.auth)
   const [isTouched, setIsTouched] = useState(false)
 
   const {register , handleSubmit, formState: {errors}, getFieldState, trigger } = useForm<signUpType>({

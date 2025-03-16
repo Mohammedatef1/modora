@@ -2,14 +2,18 @@ import { TLoading } from "@customTypes/shared";
 import { createSlice } from "@reduxjs/toolkit";
 import actRegister from "./actions/actRegister";
 
-interface IRegisterSlice {
+interface IAuthSlice {
   loading: TLoading;
   error: string | null;
+  user: null | {id: string, email: string, firstName: string, lastName: string};
+  accessToken: string | null
 }
 
-const initialState: IRegisterSlice = {
+const initialState: IAuthSlice = {
   error: null,
-  loading: "idle"
+  loading: "idle",
+  user: null,
+  accessToken: null
 }
 
 const registerSlice = createSlice({

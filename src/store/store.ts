@@ -2,7 +2,7 @@ import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import cartSlice from '@store/cart/cartSlice';
 import categoriesSlice from '@store/categories/categoriesSlice';
 import productsSlice from '@store/products/productsSlice';
-import registerSlice from "@store/register/registerSlice";
+import authSlice from "@store/auth/authSlice";
 import WishlistSlice from '@store/wishlist/wishlistSlice';
 import { FLUSH, PAUSE, PERSIST, persistReducer, persistStore, PURGE, REGISTER, REHYDRATE } from "redux-persist";
 import storage from 'redux-persist/lib/storage';
@@ -20,7 +20,7 @@ const wishlistPersistConfig = {
 }
 
 const rootReducer = combineReducers({
-  register: registerSlice,
+  auth: authSlice,
   categories : categoriesSlice,
   products: productsSlice,
   wishlist: persistReducer(wishlistPersistConfig, WishlistSlice),
