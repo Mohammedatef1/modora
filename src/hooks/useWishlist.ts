@@ -1,6 +1,6 @@
 import { useAppDispatch, useAppSelector } from "@store/hooks"
 import actGetWishlistProducts from "@store/wishlist/actions/actGetWishlistProducts"
-import { productsCleanUp } from "@store/wishlist/wishlistSlisce"
+import { productsCleanUp } from "@store/wishlist/wishlistSlice"
 import { useEffect } from "react"
 
 const useWishlist = () => {
