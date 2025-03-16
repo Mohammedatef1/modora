@@ -2,6 +2,7 @@ import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import categoriesSlice from '@store/categories/categoriesSlice'
 import productsSlice from '@store/products/productsSlice'
 import WishlistSlice from '@store/wishlist/wishlistSlisce'
+import registerSlice from "@store/register/registserSlice"
 import cartSlice from '@store/cart/cartSlice'
 import storage from 'redux-persist/lib/storage'
 import {FLUSH, PAUSE, PERSIST, persistReducer, persistStore, PURGE, REGISTER, REHYDRATE} from "redux-persist"
@@ -19,6 +20,7 @@ const wishlistPersistConfig = {
 }
 
 const rootReducer = combineReducers({
+  register: registerSlice,
   categories : categoriesSlice,
   products: productsSlice,
   wishlist: persistReducer(wishlistPersistConfig, WishlistSlice),

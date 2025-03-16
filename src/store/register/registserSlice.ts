@@ -25,7 +25,7 @@ const registerSlice = createSlice({
       state.loading = "fulfilled";
       state.error = null;
     })
-    builder.addCase(actRegister.pending , (state, action) => {
+    builder.addCase(actRegister.rejected , (state, action) => {
       state.loading = "rejected"
       if (action.payload && typeof action.payload === 'string'){
         state.error = action.payload
