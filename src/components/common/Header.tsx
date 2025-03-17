@@ -2,14 +2,16 @@ import { NavLink, useNavigate } from "react-router-dom";
 import HeaderLeftSide from "./HeaderLeftSide";
 import { useAppDispatch, useAppSelector } from "@store/hooks";
 import { logOut } from "@store/auth/authSlice";
+import { productsIdsCleanUp } from "@store/wishlist/wishlistSlice";
 
 const Header = () => {
   const dispatch = useAppDispatch()
   const navigate = useNavigate()
   const {accessToken} = useAppSelector(state => state.auth)
 
-  const logoutHandler = () => {
+  const logOutHandler = () => {
     dispatch(logOut());
+    dispatch(productsIdsCleanUp())
     navigate("/login");
   }
   return (
@@ -26,7 +28,7 @@ const Header = () => {
       </nav>
       <nav className="flex items-center gap-3">
         {accessToken ? 
-        <button className="text-red-400" onClick={logoutHandler}>Logout</button> 
+        <button className="text-red-400" onClick={logOutHandler}>Logout</button> 
         : 
         <>
           <NavLink className="link" to="/register">Register</NavLink>

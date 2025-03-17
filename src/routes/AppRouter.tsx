@@ -32,14 +32,14 @@ const router = createBrowserRouter([
               path: "categories",
               element: 
                 (<Suspense fallback={<p>Loading please wait...</p>}>
-                  <ProtectedRoute><Categories/></ProtectedRoute>
+                  <Categories/>
                 </Suspense>)
           },
           {
               path: "categories/products/:prefix",
               element: 
                 (<Suspense fallback={<p>Loading please wait...</p>}>
-                  <ProtectedRoute><Products/></ProtectedRoute>
+                  <Products/>
                 </Suspense>),
               loader: ( { params } )=> {
                 if (typeof params.prefix !== "string" || !(/^[A-Za-z]+$/).test(params.prefix)){
@@ -62,7 +62,7 @@ const router = createBrowserRouter([
             path: 'cart',
             element:  
               (<Suspense fallback={<p>Loading please wait...</p>}>
-                <ProtectedRoute><Cart/></ProtectedRoute>
+                <Cart/>
               </Suspense>)
           },
           {

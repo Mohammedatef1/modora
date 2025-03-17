@@ -24,6 +24,9 @@ const wishlistSlice = createSlice({
   reducers: {
     productsCleanUp: (state) => {
       state.products = []
+    },
+    productsIdsCleanUp: (state) => {
+      state.productsIds = []
     }
   },
   extraReducers: (builder) => {
@@ -56,5 +59,5 @@ const wishlistSlice = createSlice({
   }
 })
 
-export const {productsCleanUp} =  wishlistSlice.actions
+export const {productsCleanUp, productsIdsCleanUp} =  wishlistSlice.actions
 export default wishlistSlice.reducer
