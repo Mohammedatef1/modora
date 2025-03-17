@@ -1,36 +1,11 @@
 import Heading from "@components/common/Heading"
 import Input from "@components/form/Input"
-import { zodResolver } from "@hookform/resolvers/zod"
-import actLogin from "@store/auth/actions/actLogin"
-import { cleanUpAuth } from "@store/auth/authSlice"
-import { useAppDispatch, useAppSelector } from "@store/hooks"
-import { useEffect } from "react"
-import { SubmitHandler, useForm } from "react-hook-form"
-import { Navigate, useNavigate } from "react-router-dom"
-import { loginSchema, LogInType } from "src/validations/LoginValidation"
+import useLogin from "@hooks/useLogin"
+import { Navigate } from "react-router-dom"
 
 const Login = () => {
-  const dispatch = useAppDispatch()
-  const navigate = useNavigate()
-  const {error, loading, accessToken} = useAppSelector(state => state.auth)
-  const {register, handleSubmit , formState : {errors}} = useForm<LogInType>({
-    resolver: zodResolver(loginSchema),
-    mode: "onTouched"
-  })
-
-  useEffect(() => {
-    return () => {dispatch(cleanUpAuth())}
-  }, [dispatch])
-
-  const errorHandler = () => {
-    console.log(errors)
-  }
-
-  const submitHandler : SubmitHandler<LogInType>  = (data)=> {
-    dispatch(actLogin(data)).unwrap().then(() => {
-      navigate("/")
-    })
-  }
+  
+  const {error, loading, accessToken, register, handleSubmit, errorHandler, submitHandler, errors} = useLogin()
 
   if(accessToken) {
     return <Navigate to={"/"} />
