@@ -3,6 +3,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import Error from "@pages/Error"
 import Register from '@pages/Register'
 import Login from '@pages/Login'
+import ProtectedRoute from '@components/common/ProtectedRoute'
 const Categories = lazy(() => import("@pages/Categories"))
 const AboutUs = lazy(() => import("@pages/AboutUs"))
 const MainLayout = lazy(() => import("@layouts/MainLayout"))
@@ -31,14 +32,14 @@ const router = createBrowserRouter([
               path: "categories",
               element: 
                 (<Suspense fallback={<p>Loading please wait...</p>}>
-                  <Categories/>
+                  <ProtectedRoute><Categories/></ProtectedRoute>
                 </Suspense>)
           },
           {
               path: "categories/products/:prefix",
               element: 
                 (<Suspense fallback={<p>Loading please wait...</p>}>
-                  <Products/>
+                  <ProtectedRoute><Products/></ProtectedRoute>
                 </Suspense>),
               loader: ( { params } )=> {
                 if (typeof params.prefix !== "string" || !(/^[A-Za-z]+$/).test(params.prefix)){
@@ -61,28 +62,28 @@ const router = createBrowserRouter([
             path: 'cart',
             element:  
               (<Suspense fallback={<p>Loading please wait...</p>}>
-                <Cart/>
+                <ProtectedRoute><Cart/></ProtectedRoute>
               </Suspense>)
           },
           {
             path: 'wishlist',
             element:  
               (<Suspense fallback={<p>Loading please wait...</p>}>
-                <Wishlist/>
+                <ProtectedRoute><Wishlist/></ProtectedRoute>
               </Suspense>)
           },
           {
             path: 'register',
             element:  
               (<Suspense fallback={<p>Loading please wait...</p>}>
-                <Register/>
+                <ProtectedRoute authority='notUser'><Register/></ProtectedRoute>
               </Suspense>)
           },
           {
             path: 'login',
             element:  
               (<Suspense fallback={<p>Loading please wait...</p>}>
-                <Login/>
+                <ProtectedRoute authority='notUser'><Login/></ProtectedRoute>
               </Suspense>)
           }
       ]
