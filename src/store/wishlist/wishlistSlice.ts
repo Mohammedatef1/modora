@@ -41,7 +41,11 @@ const wishlistSlice = createSlice({
     builder.addCase(actGetWishlistProducts.fulfilled , (state, action) => {
       state.loading = "fulfilled";
       state.error = null;
-      state.products = action.payload;
+      if(action.payload.type === "productsIds"){
+        state.productsIds = action.payload.data;
+      }else {
+        state.products = action.payload.data
+      }
     })
     builder.addCase(actGetWishlistProducts.rejected , (state, action) => {
       state.loading = 'rejected';
