@@ -1,7 +1,16 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import HeaderLeftSide from "./HeaderLeftSide";
+import { useAppDispatch } from "@store/hooks";
+import { logOut } from "@store/auth/authSlice";
 
 const Header = () => {
+  const dispatch = useAppDispatch()
+  const navigate = useNavigate()
+
+  const logoutHandler = () => {
+    dispatch(logOut());
+    navigate("/login");
+  }
   return (
   <header>
     <div className="flex align-center justify-between ">
@@ -17,6 +26,7 @@ const Header = () => {
       <nav className="flex items-center gap-3">
         <NavLink className="link" to="/register">Register</NavLink>
         <NavLink className="link" to="/login">Login</NavLink>
+        <button className="text-red-400" onClick={logoutHandler}>Logout</button>
       </nav>
     </div>
   </header> );

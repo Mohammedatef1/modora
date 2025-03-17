@@ -24,6 +24,10 @@ const registerSlice = createSlice({
     cleanUpAuth: (state)=> {
       state.loading="idle";
       state.error= null;
+    },
+    logOut : (state) => {
+      state.accessToken = null;
+      state.user = null;
     }
   },
   extraReducers: (builder) => {
@@ -60,5 +64,5 @@ const registerSlice = createSlice({
   }
 })
 
-export const {cleanUpAuth} = registerSlice.actions
+export const {cleanUpAuth, logOut} = registerSlice.actions
 export default registerSlice.reducer;
