@@ -6,13 +6,13 @@ import { cleanUpAuth } from "@store/auth/authSlice"
 import { useAppDispatch, useAppSelector } from "@store/hooks"
 import { useEffect } from "react"
 import { SubmitHandler, useForm } from "react-hook-form"
-import { useNavigate } from "react-router-dom"
+import { Navigate, useNavigate } from "react-router-dom"
 import { loginSchema, LogInType } from "src/validations/LoginValidation"
 
 const Login = () => {
   const dispatch = useAppDispatch()
   const navigate = useNavigate()
-  const {error, loading} = useAppSelector(state => state.auth)
+  const {error, loading, accessToken} = useAppSelector(state => state.auth)
   const {register, handleSubmit , formState : {errors}} = useForm<LogInType>({
     resolver: zodResolver(loginSchema),
     mode: "onTouched"
@@ -28,6 +28,10 @@ const Login = () => {
 
   const submitHandler : SubmitHandler<LogInType>  = (data)=> {
     dispatch(actLogin(data)).unwrap().then(() => navigate("/"))
+  }
+
+  if(accessToken) {
+    return <Navigate to={"/"} />
   }
 
   return (

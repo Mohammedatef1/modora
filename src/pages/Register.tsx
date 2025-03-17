@@ -6,7 +6,7 @@ import Input from "@components/form/Input"
 import useCheckEmailAvailability from "@hooks/useCheckEmailAvailability"
 import { useAppDispatch, useAppSelector } from "@store/hooks"
 import actRegister from "@store/auth/actions/actRegister"
-import { useNavigate } from "react-router-dom"
+import { Navigate, useNavigate } from "react-router-dom"
 import { useEffect } from "react"
 import { cleanUpAuth } from "@store/auth/authSlice"
 
@@ -14,7 +14,7 @@ const Register = () => {
   const {previousEmail, emailAvailabilityStatus, checkAvailability, resetPreviousEmail} = useCheckEmailAvailability()
   const dispatch = useAppDispatch()
   const navigate = useNavigate()
-  const {error, loading} = useAppSelector(state => state.auth)
+  const {error, loading, accessToken} = useAppSelector(state => state.auth)
 
   const {register , handleSubmit, formState: {errors}, getFieldState, trigger } = useForm<signUpType>({
     resolver: zodResolver(signUpSchema),
@@ -48,6 +48,10 @@ const Register = () => {
     if(invalid && previousEmail){
       resetPreviousEmail()
     }
+  }
+
+  if(accessToken) {
+    return <Navigate to={"/"} />
   }
 
   return (
