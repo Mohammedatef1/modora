@@ -2,7 +2,6 @@ import { NavLink, useNavigate } from "react-router-dom";
 import HeaderLeftSide from "./HeaderLeftSide";
 import { useAppDispatch, useAppSelector } from "@store/hooks";
 import { logOut } from "@store/auth/authSlice";
-import { productsIdsCleanUp } from "@store/wishlist/wishlistSlice";
 import { useEffect } from "react";
 import actGetWishlistProducts from "@store/wishlist/actions/actGetWishlistProducts";
 import { capitalizeFirstLetter } from "src/utils";
@@ -18,7 +17,6 @@ const Header = () => {
 
   const logOutHandler = () => {
     dispatch(logOut());
-    dispatch(productsIdsCleanUp())
     navigate("/login");
   }
   return (
