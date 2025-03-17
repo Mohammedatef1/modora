@@ -76,14 +76,14 @@ const router = createBrowserRouter([
             path: 'register',
             element:  
               (<Suspense fallback={<p>Loading please wait...</p>}>
-                <ProtectedRoute authority='notUser'><Register/></ProtectedRoute>
+                <Register/>
               </Suspense>)
           },
           {
             path: 'login',
             element:  
               (<Suspense fallback={<p>Loading please wait...</p>}>
-                <ProtectedRoute authority='notUser'><Login/></ProtectedRoute>
+                <Login/>
               </Suspense>)
           }
       ]
