@@ -3,11 +3,18 @@ import HeaderLeftSide from "./HeaderLeftSide";
 import { useAppDispatch, useAppSelector } from "@store/hooks";
 import { logOut } from "@store/auth/authSlice";
 import { productsIdsCleanUp } from "@store/wishlist/wishlistSlice";
+import { useEffect } from "react";
+import actGetWishlistProducts from "@store/wishlist/actions/actGetWishlistProducts";
+import { capitalizeFirstLetter } from "src/utils";
 
 const Header = () => {
   const dispatch = useAppDispatch()
   const navigate = useNavigate()
-  const {accessToken} = useAppSelector(state => state.auth)
+  const {accessToken, user} = useAppSelector(state => state.auth)
+
+  useEffect(()=> {
+    dispatch(actGetWishlistProducts("productsIds"))
+  }, [dispatch, accessToken])
 
   const logOutHandler = () => {
     dispatch(logOut());
@@ -28,7 +35,10 @@ const Header = () => {
       </nav>
       <nav className="flex items-center gap-3">
         {accessToken ? 
-        <button className="text-red-400" onClick={logOutHandler}>Logout</button> 
+        <>
+          <p className="text-gray-200">Hello, {capitalizeFirstLetter(user?.firstName || "", user?.lastName || "")}</p>
+          <button className="text-red-400" onClick={logOutHandler}>Logout</button> 
+        </>
         : 
         <>
           <NavLink className="link" to="/register">Register</NavLink>

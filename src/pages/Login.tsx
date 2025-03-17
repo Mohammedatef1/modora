@@ -4,7 +4,6 @@ import { zodResolver } from "@hookform/resolvers/zod"
 import actLogin from "@store/auth/actions/actLogin"
 import { cleanUpAuth } from "@store/auth/authSlice"
 import { useAppDispatch, useAppSelector } from "@store/hooks"
-import actGetWishlistProducts from "@store/wishlist/actions/actGetWishlistProducts"
 import { useEffect } from "react"
 import { SubmitHandler, useForm } from "react-hook-form"
 import { Navigate, useNavigate } from "react-router-dom"
@@ -29,7 +28,6 @@ const Login = () => {
 
   const submitHandler : SubmitHandler<LogInType>  = (data)=> {
     dispatch(actLogin(data)).unwrap().then(() => {
-      dispatch(actGetWishlistProducts("productsIds"))
       navigate("/")
     })
   }

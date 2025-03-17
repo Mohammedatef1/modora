@@ -15,7 +15,6 @@ const actGetWishlistProducts = createAsyncThunk('wishlist/actGetWishlistProducts
     const productsIds = userWishlist.data.map(el => el.productId)
 
     if(dataType === "productsIds") {
-      console.log(productsIds)
       return {data: productsIds, type: dataType}
     }else {
       // get the full data for these products
