@@ -8,7 +8,7 @@ const useWishlist = () => {
   const wishlist = useAppSelector(state => state.wishlist)
   const {items} = useAppSelector(state => state.cart)
   const {productsIds , products, error, loading} = wishlist
-  const productsFullInfo = products.map(el =>  ({...el , isLiked : productsIds.includes(el.id), quantity: items[el.id] }))
+  const productsFullInfo = products.map(el =>  ({...el , isLiked : productsIds.includes(el.id), quantity: items[el.id], isAuthenticated : true }))
   useEffect(() => {
     const response = dispatch(actGetWishlistProducts("productsFullInfo"))
 

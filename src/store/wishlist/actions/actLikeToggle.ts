@@ -6,6 +6,7 @@ import axiosErrorHandler from "src/utils/axiosErrorHandler";
 const actLikeToggle = createAsyncThunk('wishlist/actLikeToggle' , async(id:number , thunkAPI) => {
   const { rejectWithValue, getState } = thunkAPI;
   const { auth } = getState() as RootState;
+
   try {
     const isRecordExist = await axios.get(`/wishlist?userId=${auth.user?.id}&&productId=${id}`)
     if(isRecordExist.data.length > 0){

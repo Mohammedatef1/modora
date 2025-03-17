@@ -10,11 +10,12 @@ const useProducts = () => {
   const {items} = useAppSelector(state => state.cart)
   const likedProducts = useAppSelector(state => state.wishlist.productsIds)
   const params = useParams()
-
+  const {accessToken} = useAppSelector(state => state.auth)
   const productsFullInfo = records.map(el =>({
       ...el,
       quantity: items[el.id] || 0,
-      isLiked : likedProducts.includes(el.id)
+      isLiked : likedProducts.includes(el.id),
+      isAuthenticated: accessToken ? true : false 
     })
   )
 
