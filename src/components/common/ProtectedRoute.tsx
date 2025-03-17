@@ -1,25 +1,18 @@
 import { useAppSelector } from "@store/hooks";
+import { Navigate } from "react-router-dom";
 
 interface ProtectedRouteProps {
   children: React.ReactNode;
 }
 
 const ProtectedRoute = ({children} : ProtectedRouteProps) => {
-  const {user} = useAppSelector(state => state.auth)
+  const {accessToken} = useAppSelector(state => state.auth)
 
-  // useEffect(() => {
-  //   console.log(user)
-  //   if (!user) {
-  //     navigate("/login");
-  //   }
+  if(!accessToken){
+    return <Navigate to="/login"/>
+  } 
 
-  //   if (user) {
-  //     navigate("/");
-  //   }
-  // }, [user, navigate]);
-  if(!user) return
-
-  return user && (<>{children}</>);
+  return accessToken && (<>{children}</>);
 }
 
 export default ProtectedRoute
