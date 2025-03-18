@@ -12,6 +12,9 @@ const Cart = () => {
       <Heading title="Cart" />
       <Loading error={error} type="cart" loading={loading}><ListCartItems records={products} renderedItemFunction={(product) => (<CartItem key={product.id} {...product}></CartItem>)}></ListCartItems></Loading>
       <CartTotal></CartTotal>
+      <div className="flex flex-col items-center">
+        <button className="ms-auto bg-blue-500 px-4 py-2 rounded-sm text-white">Place order</button>
+      </div>
     </>
   )
 }
