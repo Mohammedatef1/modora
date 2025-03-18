@@ -2,9 +2,10 @@ import { TOrderItem } from "@customTypes/orders";
 import { TLoading } from "@customTypes/shared";
 import { createSlice } from "@reduxjs/toolkit";
 import actPlaceOrder from "./actions/actPlaceOrder";
+import actGetOrders from "./actions/actGetOrders";
 
 interface IOrdersSlice {
-  orders: TOrderItem[];
+  userOrders: TOrderItem[];
   loading: TLoading;
   error: null | string
 }
@@ -12,7 +13,7 @@ interface IOrdersSlice {
 const initialState: IOrdersSlice = {
   error: null,
   loading: "idle",
-  orders: []
+  userOrders: []
 }
 
 const ordersSlice = createSlice({
@@ -21,7 +22,8 @@ const ordersSlice = createSlice({
   reducers: {
     cleanUpOrders: (state) => {
       state.error = null;
-      state.loading = "idle"
+      state.loading = "idle";
+      state.userOrders = [];
     }
   },
   extraReducers: (builder) => {
@@ -29,15 +31,30 @@ const ordersSlice = createSlice({
       state.error = null;
       state.loading= "pending"
     })
-    builder.addCase(actPlaceOrder.fulfilled, (state, action) => {
+    builder.addCase(actPlaceOrder.fulfilled, (state) => {
       state.loading ="fulfilled";
       state.error = null;
-      state.orders = action.payload
     })
     builder.addCase(actPlaceOrder.rejected, (state, action) => {
       state.loading = "rejected";
       if (action.payload && typeof action.payload === "string"){
         state.error = action.payload
+      }
+    })
+
+    builder.addCase(actGetOrders.pending , (state) => {
+      state.loading = "pending";
+      state.error = null;
+    })
+    builder.addCase(actGetOrders.fulfilled , (state, action) => {
+      state.loading = "fulfilled";
+      state.userOrders = action.payload;
+      state.error = null;
+    })
+    builder.addCase(actGetOrders.rejected , (state, action) => {
+      state.loading = "rejected";
+      if (action.payload && typeof action.payload === "string" ){
+        state.error = action.payload;
       }
     })
   }
