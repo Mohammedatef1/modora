@@ -20,12 +20,6 @@ const authPersistConfig = {
   whitelist : ["accessToken", "user"]
 }
 
-// const wishlistPersistConfig = {
-//   key: 'wishlist',
-//   storage,
-//   whitelist: ['productsIds']
-// }
-
 const rootReducer = combineReducers({
   auth: persistReducer(authPersistConfig, authSlice),
   categories : categoriesSlice,
