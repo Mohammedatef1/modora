@@ -1,14 +1,14 @@
-import { NavLink, useNavigate } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import HeaderLeftSide from "./HeaderLeftSide";
 import { useAppDispatch, useAppSelector } from "@store/hooks";
 import { logOut } from "@store/auth/authSlice";
 import { useEffect } from "react";
 import actGetWishlistProducts from "@store/wishlist/actions/actGetWishlistProducts";
-import { capitalizeFirstLetter } from "src/utils";
 
 const Header = () => {
   const dispatch = useAppDispatch()
   const navigate = useNavigate()
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const {accessToken, user} = useAppSelector(state => state.auth)
 
   useEffect(()=> {
@@ -34,7 +34,9 @@ const Header = () => {
       <nav className="flex items-center gap-3">
         {accessToken ? 
         <>
-          <p className="text-gray-200">Hello, {capitalizeFirstLetter(user?.firstName || "", user?.lastName || "")}</p>
+          <Link to="profile">
+            <div className="avatar w-9 h-9 rounded-full bg-gray-200"></div>
+          </Link>
           <button className="text-red-400" onClick={logOutHandler}>Logout</button> 
         </>
         : 

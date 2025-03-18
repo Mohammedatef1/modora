@@ -4,6 +4,9 @@ import Error from "@pages/Error"
 import Register from '@pages/Register'
 import Login from '@pages/Login'
 import ProtectedRoute from '@components/common/ProtectedRoute'
+const ProfileLayout = lazy(() => import("@layouts/ProfileLayout"))
+const Profile = lazy(() => import("@pages/Profile"))
+const Orders = lazy(()=> import("@pages/Orders"))
 const Categories = lazy(() => import("@pages/Categories"))
 const AboutUs = lazy(() => import("@pages/AboutUs"))
 const MainLayout = lazy(() => import("@layouts/MainLayout"))
@@ -85,6 +88,31 @@ const router = createBrowserRouter([
               (<Suspense fallback={<p>Loading please wait...</p>}>
                 <Login/>
               </Suspense>)
+          },
+          {
+            path: "profile",
+            element: 
+            (<Suspense fallback={<p>Loading please wait...</p>}>
+              <ProtectedRoute>
+                <ProfileLayout/>
+              </ProtectedRoute>
+            </Suspense>),
+            children: [
+              {
+                index: true,
+                element: 
+                (<Suspense fallback={<p>Loading please wait...</p>}>
+                  <Profile/>
+                </Suspense>)
+              },
+              {
+                path: "orders",
+                element: 
+                (<Suspense fallback={<p>Loading please wait...</p>}>
+                  <Orders/>
+                </Suspense>)
+              }
+            ]
           }
       ]
   }

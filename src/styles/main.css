@@ -23,6 +23,13 @@ body{
   }
 }
 
+.side-bar {
+  .side-bar-link.active{
+    @apply bg-primary font-semibold;
+    color: white;
+  }
+}
+
 .pulseAnimation {
   animation: pulse 300ms ease;
   -webkit-animation: pulse 300ms ease;
