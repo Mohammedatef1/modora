@@ -14,10 +14,10 @@ const initialState: IOrdersSlice = {
   orders: []
 }
 
-const orderSlice = createSlice({
+const ordersSlice = createSlice({
   name: "order",
   initialState,
   reducers: {}
 })
 
-export default orderSlice.reducer
+export default ordersSlice.reducer
