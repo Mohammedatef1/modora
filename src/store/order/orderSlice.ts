@@ -1,14 +1,14 @@
-import { TOrder } from "@customTypes/order";
+import { TOrderItem } from "@customTypes/orders";
 import { TLoading } from "@customTypes/shared";
 import { createSlice } from "@reduxjs/toolkit";
 
-interface IOrder {
-  orders: TOrder[];
+interface IOrdersSlice {
+  orders: TOrderItem[];
   loading: TLoading;
   error: null | string
 }
 
-const initialState: IOrder = {
+const initialState: IOrdersSlice = {
   error: null,
   loading: "idle",
   orders: []

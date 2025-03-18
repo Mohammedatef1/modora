@@ -1,8 +1,8 @@
 import { TProduct } from "./product";
 
-export type TOrder = {
+export type TOrderItem = {
   userId: number;
-  orderItems: TProduct[];
+  orderList: TProduct[];
   total: number;
   id: number
 }
