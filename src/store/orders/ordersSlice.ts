@@ -2,7 +2,7 @@ import { TOrderItem } from "@customTypes/orders";
 import { TLoading } from "@customTypes/shared";
 import { createSlice } from "@reduxjs/toolkit";
 import actPlaceOrder from "./actions/actPlaceOrder";
-import actGetOrders from "./actions/actGetOrders";
+import actGetUserOrders from "./actions/actGetOrders";
 
 interface IOrdersSlice {
   userOrders: TOrderItem[];
@@ -42,16 +42,16 @@ const ordersSlice = createSlice({
       }
     })
 
-    builder.addCase(actGetOrders.pending , (state) => {
+    builder.addCase(actGetUserOrders.pending , (state) => {
       state.loading = "pending";
       state.error = null;
     })
-    builder.addCase(actGetOrders.fulfilled , (state, action) => {
+    builder.addCase(actGetUserOrders.fulfilled , (state, action) => {
       state.loading = "fulfilled";
       state.userOrders = action.payload;
       state.error = null;
     })
-    builder.addCase(actGetOrders.rejected , (state, action) => {
+    builder.addCase(actGetUserOrders.rejected , (state, action) => {
       state.loading = "rejected";
       if (action.payload && typeof action.payload === "string" ){
         state.error = action.payload;

@@ -1,14 +1,17 @@
+import { TOrderItem } from "@customTypes/orders"
 import { createAsyncThunk } from "@reduxjs/toolkit"
 import { RootState } from "@store/store"
 import axios from "axios"
 import axiosErrorHandler from "src/utils/axiosErrorHandler"
 
-const actGetOrders = createAsyncThunk("orders/actGetOrders" , async (_, thunkAPI) => {
+type TResponse = TOrderItem[]
+
+const actGetUserOrders = createAsyncThunk("orders/actGetUserOrders" , async (_, thunkAPI) => {
   const {rejectWithValue, getState} = thunkAPI
   const {auth} = getState() as RootState
-  
+
   try {
-    const response = await axios.get(`/orders?userId=${auth.user?.id}`)
+    const response = await axios.get<TResponse>(`/orders?userId=${auth.user?.id}`)
 
     return response.data
   } catch (error) {
@@ -16,4 +19,4 @@ const actGetOrders = createAsyncThunk("orders/actGetOrders" , async (_, thunkAPI
   }
 })
 
-export default actGetOrders 
+export default actGetUserOrders 
