@@ -1,28 +1,33 @@
 import actGetFullProductsData from "@store/cart/actions/actGetFullProductsData"
-import { cleanUpCartProducts } from "@store/cart/cartSlice"
+import { cleanUpCartProducts, clearAllCartData } from "@store/cart/cartSlice"
 import { useAppDispatch, useAppSelector } from "@store/hooks"
 import actPlaceOrder from "@store/orders/actions/actPlaceOrder"
+import { cleanUpOrders } from "@store/orders/ordersSlice"
 import { useEffect } from "react"
 
 const useCart = () => {
   const dispatch = useAppDispatch();
-  const {products, loading, error} = useAppSelector(state => state.cart)
+  const {products, loading: cartLoading, error: cartError} = useAppSelector(state => state.cart)
   const {accessToken} = useAppSelector(state => state.auth)
+  const {loading: ordersLoading , error: ordersError} = useAppSelector(state => state.orders)
 
   useEffect(() => {
     const response = dispatch(actGetFullProductsData())
 
     return () => {
       dispatch(cleanUpCartProducts());
+      dispatch(cleanUpOrders())
       response.abort()
     }
   }, [dispatch])
 
   const placeOrderHandler = () => {
-    dispatch(actPlaceOrder())
+    dispatch(actPlaceOrder()).unwrap().then((() => {
+      dispatch(clearAllCartData())
+    }))
   }
 
-  return {products, loading, error, placeOrderHandler, accessToken}
+  return {products, cartLoading, cartError, ordersLoading, ordersError, placeOrderHandler, accessToken}
 }
 
 export default useCart

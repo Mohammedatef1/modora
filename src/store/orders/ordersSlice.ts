@@ -18,7 +18,12 @@ const initialState: IOrdersSlice = {
 const ordersSlice = createSlice({
   name: "order",
   initialState,
-  reducers: {},
+  reducers: {
+    cleanUpOrders: (state) => {
+      state.error = null;
+      state.loading = "idle"
+    }
+  },
   extraReducers: (builder) => {
     builder.addCase(actPlaceOrder.pending, (state) => {
       state.error = null;
@@ -38,4 +43,5 @@ const ordersSlice = createSlice({
   }
 })
 
+export const {cleanUpOrders} = ordersSlice.actions
 export default ordersSlice.reducer
