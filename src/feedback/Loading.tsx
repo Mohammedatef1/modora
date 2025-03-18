@@ -3,6 +3,7 @@ import CategorySkeleton from "./skeletons/CategorySkeleton";
 import CartSkeleton from "./skeletons/CartSkeleton";
 import ProductSkeleton from "./skeletons/ProductSkeleton";
 import LottieHandler from "./LottieHandler";
+import OrdersSkeleton from "./skeletons/OrdersSkeleton";
 
 interface LoadingProps {
   loading: TLoading;
@@ -14,7 +15,8 @@ interface LoadingProps {
 const loadingSkeleton = {
   category: CategorySkeleton,
   product: ProductSkeleton,
-  cart: CartSkeleton
+  cart: CartSkeleton,
+  orders: OrdersSkeleton
 } 
 
 
