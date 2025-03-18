@@ -1,16 +1,10 @@
 import { useAppSelector } from "@store/hooks"
+import { getTotalCart } from "src/utils";
 
 const CartTotal = () => {
   const {products} = useAppSelector(state => state.cart);
   
-  const cartSubTotal = products.reduce((previousValue, el) => {
-    const price = el.price;
-    const quantity = el.quantity || 1;
-    if(quantity && typeof quantity == "number"){
-      return previousValue + price * quantity
-    }
-    return previousValue
-  }, 0)
+  const cartSubTotal = getTotalCart(products)
   
   return (
     <div className="flex items-center justify-between py-3">
