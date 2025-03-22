@@ -21,7 +21,7 @@ const HeaderLeftSide = () => {
   }
 
   return (
-    <div className="flex items-center gap-x-4">
+    <div className="flex items-center gap-2 md:4 lg:gap-7">
       <nav className="flex items-center gap-3">
         {accessToken ? 
         <>
