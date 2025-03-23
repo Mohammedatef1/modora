@@ -1,12 +1,16 @@
+import { useAppSelector } from '@store/hooks'
 import BestSellingItem from './BestSellingItem'
 
-const Tabs = () => {
+interface tabsProps {
+  tabs: string[]
+}
+
+const Tabs = ({tabs} : tabsProps) => {
+  const {activeTab}  = useAppSelector(state => state.tabs)
   return (
     <div className="p-1.5 bg-dark-gray rounded-3xl w-fit">
       <div className="flex items-center overflow-hidden">
-        <BestSellingItem active name="Chair"/>
-        <BestSellingItem name="Chair"/>
-        <BestSellingItem name="Chair"/>
+        {tabs.map(tab => (<BestSellingItem key={tab} active={activeTab.toLowerCase() === tab.toLowerCase()} name={tab} />))}
       </div>
     </div>
   )

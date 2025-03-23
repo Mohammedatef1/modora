@@ -5,7 +5,7 @@ type TInitialState =  {
 }
 
 const initialState: TInitialState = {
-  activeTab : "Chair"
+  activeTab : "chair"
 }
 
 const tabsSlice = createSlice({
