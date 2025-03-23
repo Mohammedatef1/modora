@@ -5,6 +5,7 @@ import productsSlice from '@store/products/productsSlice';
 import authSlice from "@store/auth/authSlice";
 import WishlistSlice from '@store/wishlist/wishlistSlice';
 import ordersSlice from '@store/orders/ordersSlice'
+import tabsSlice from '@store/tabs/tabsSlice'
 import { FLUSH, PAUSE, PERSIST, persistReducer, persistStore, PURGE, REGISTER, REHYDRATE } from "redux-persist";
 import storage from 'redux-persist/lib/storage';
 
@@ -26,7 +27,8 @@ const rootReducer = combineReducers({
   products: productsSlice,
   wishlist: WishlistSlice,
   cart: persistReducer(cartPersistConfig, cartSlice),
-  orders: ordersSlice
+  orders: ordersSlice,
+  tabs: tabsSlice
 })
 
 export const store = configureStore({

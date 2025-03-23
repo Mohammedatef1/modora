@@ -1,3 +1,4 @@
+import BestProducts from "@components/common/BestProducts";
 import Features from "@components/common/Features";
 import Hero from "@components/common/Hero";
 
@@ -6,6 +7,7 @@ const Home = () => {
   <div>
     <Hero/>
     <Features/>
+    <BestProducts/>
   </div> );
 }
  

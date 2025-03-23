@@ -11,7 +11,8 @@ module.exports = {
         secondary: "#1E1E1E",
         "light-gold": "#FFF3E3",
         slate: "#0D1B39",
-        "light-gray": "#F7F7F7"
+        "light-gray": "#F7F7F7",
+        "dark-gray": "#EEEEEE"
       }
     },
   },
