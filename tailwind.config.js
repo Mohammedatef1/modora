@@ -10,7 +10,8 @@ module.exports = {
         background: "#ffffff",
         secondary: "#1E1E1E",
         "light-gold": "#FFF3E3",
-        slate: "#0D1B39"
+        slate: "#0D1B39",
+        "light-gray": "#F7F7F7"
       }
     },
   },
