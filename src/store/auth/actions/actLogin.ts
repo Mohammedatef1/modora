@@ -1,5 +1,5 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import axios from "axios";
+import { supabase } from "src/db/supabase";
 import axiosErrorHandler from "src/utils/axiosErrorHandler";
 
 type TLoginData = {
@@ -7,16 +7,14 @@ type TLoginData = {
   password: string
 }
 
-type TResponse = {
-  accessToken: string;
-  user: {id: number, email: string, firstName: string, lastName: string};
-}
-
 const actLogin = createAsyncThunk('auth/login', async(loginData: TLoginData, thunkAPI) => {
   const {rejectWithValue} = thunkAPI
   try {
-    const response = await axios.post<TResponse>('login' ,loginData )
-    return response.data
+    const {data, error} = await supabase.auth.signInWithPassword(loginData);
+
+    if(error) return rejectWithValue(error.message);
+
+    return data
   } catch (error) {
     return rejectWithValue(axiosErrorHandler(error))
   }

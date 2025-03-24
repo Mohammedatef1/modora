@@ -1,5 +1,5 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import axios from "axios";
+import { supabase } from "src/db/supabase";
 import axiosErrorHandler from "src/utils/axiosErrorHandler";
 
 type TUserData = {
@@ -13,8 +13,11 @@ const actRegister = createAsyncThunk('register/actRegister' , async (userData : 
     const {rejectWithValue} = thunkAPI;
 
     try {
-      const response = await axios.post<TUserData>("/register" , userData)
-      return response.data
+      const {data, error} = await supabase.auth.signUp(userData);
+
+      if(error) return rejectWithValue(error.message);
+
+      return data
     } catch (error) {
       return rejectWithValue(axiosErrorHandler(error))
     }

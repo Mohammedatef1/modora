@@ -52,8 +52,7 @@ const registerSlice = createSlice({
     builder.addCase(actLogin.fulfilled , (state, action) => {
       state.loading = "fulfilled";
       state.error = null;
-      state.accessToken = action.payload.accessToken;
-      state.user = action.payload.user;
+      state.accessToken = action.payload.session.access_token;
     })
     builder.addCase(actLogin.rejected , (state, action) => {
       state.loading = "rejected"
