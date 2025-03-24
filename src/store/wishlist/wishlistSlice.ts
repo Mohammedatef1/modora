@@ -3,7 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 import actLikeToggle from "./actions/actLikeToggle";
 import actGetWishlistProducts from "./actions/actGetWishlistProducts";
 import { TProduct } from "@customTypes/product";
-import { logOut } from "@store/auth/authSlice";
+import actLogout from "@store/auth/actions/actLogout";
 
 interface IWishlist {
   productsIds: number[];
@@ -54,7 +54,7 @@ const wishlistSlice = createSlice({
         state.error = action.payload;
       }
     })
-    builder.addCase(logOut , (state) => {
+    builder.addCase(actLogout.fulfilled , (state) => {
       state.productsIds = []
     })
   }

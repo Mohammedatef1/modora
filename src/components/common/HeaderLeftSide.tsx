@@ -4,7 +4,7 @@ import Cart from '../../assets/svg/cart.svg?react'
 import { useAppDispatch, useAppSelector } from "@store/hooks"
 import { getTotalCartQuantity } from "@store/cart/selectors"
 import { NavLink, Link, useNavigate } from "react-router-dom"
-import { logOut } from "@store/auth/authSlice"
+import actLogout from "@store/auth/actions/actLogout"
 
 const HeaderLeftSide = () => {
   const dispatch = useAppDispatch()
@@ -16,7 +16,7 @@ const HeaderLeftSide = () => {
   const {accessToken} = useAppSelector(state => state.auth)
 
   const logOutHandler = () => {
-    dispatch(logOut());
+    dispatch(actLogout());
     navigate("/login");
   }
 

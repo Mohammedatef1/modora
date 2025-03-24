@@ -9,7 +9,9 @@ const actGetWishlistProducts = createAsyncThunk('wishlist/actGetWishlistProducts
   const {auth} = getState() as RootState 
   try {
     // get all user liked products
+    console.log('id',auth.user?.id)
     const {data: wishlistItems, error} = await supabase.from('wishlist').select().eq('userId' , auth.user?.id)
+    console.log(wishlistItems, error)
 
     if(error) {
       return rejectWithValue(error.message)

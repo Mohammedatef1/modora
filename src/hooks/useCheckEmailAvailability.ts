@@ -1,4 +1,3 @@
-import axios from "axios"
 import { useState } from "react"
 
 type TEmailAvailabilityStatus = "idle" | "checking" | "available" | "notAvailable" | "error" 
@@ -11,13 +10,10 @@ const useCheckEmailAvailability = () => {
     setPreviousEmail(email)
     try {
       setEmailAvailabilityStatus("checking");
-      const response = await axios.get(`/users?email=${email}`)
-  
-      if(response.data.length === 0){
-        setEmailAvailabilityStatus("available")
-      }else{
-        setEmailAvailabilityStatus("notAvailable")
-      }
+      //const response = await axios.get(`/users?email=${email}`)
+
+      setEmailAvailabilityStatus("available");
+ 
     } catch (error) {
       console.log(error)
       setEmailAvailabilityStatus("error")

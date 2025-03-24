@@ -1,18 +1,32 @@
-import { useAppSelector } from "@store/hooks";
-import { Navigate } from "react-router-dom";
+import { useCallback, useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { supabase } from "src/db/supabase";
+import { User } from "@supabase/supabase-js";
 
 interface ProtectedRouteProps {
   children: React.ReactNode;
 }
 
 const ProtectedRoute = ({children} : ProtectedRouteProps) => {
-  const {accessToken} = useAppSelector(state => state.auth)
+  
+  const navigate = useNavigate()
+  const [user, setUser] = useState<User | null>(null)
+  const [error, setError] = useState<unknown>()
 
-  if(!accessToken){
-    return <Navigate to="/login"/>
-  } 
+  const fetchUser = useCallback( async() => {
+    const { data, error } = await supabase.auth.getUser()
+    if (error) {
+      setError(error);
+      navigate('/login', {replace: true})
+    }
+    setUser(data.user)
+  }, [navigate])
 
-  return accessToken && (<>{children}</>);
+  useEffect(() => {    
+    fetchUser();
+  }, [fetchUser])
+  
+  return !error && user ? (<>{children}</>) : null;
 }
 
 export default ProtectedRoute

@@ -22,7 +22,7 @@ const useRegister = () => {
   const submitHandler : SubmitHandler<signUpType> = async (data) => {
     const {email, firstName, lastName, password} = data
     await dispatch(actRegister({email, firstName, lastName, password})).unwrap().then(() => {
-      navigate("/login")
+      navigate("/")
     })
   }
 

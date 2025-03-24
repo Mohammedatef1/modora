@@ -13,10 +13,20 @@ const actRegister = createAsyncThunk('register/actRegister' , async (userData : 
     const {rejectWithValue} = thunkAPI;
 
     try {
-      const {data, error} = await supabase.auth.signUp(userData);
-
+      const {data, error} = await supabase.auth.signUp({
+        email: userData.email,
+        password: userData.password,
+        options: {
+          data: {
+            firstName: userData.firstName,
+            lastName: userData.lastName
+          }
+        }
+      });
+      
       if(error) return rejectWithValue(error.message);
-
+      
+      console.log(data)
       return data
     } catch (error) {
       return rejectWithValue(axiosErrorHandler(error))
