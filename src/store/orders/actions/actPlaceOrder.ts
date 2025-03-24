@@ -1,6 +1,6 @@
 import { createAsyncThunk } from "@reduxjs/toolkit"
 import { RootState } from "@store/store";
-import axios from "axios";
+import { supabase } from "src/db/supabase";
 import { getTotalCart } from "src/utils";
 import axiosErrorHandler from "src/utils/axiosErrorHandler";
 
@@ -18,14 +18,18 @@ const actPlaceOrder = createAsyncThunk('orders/actPlaceOrder' , async (_, thunkA
       quantity: el.quantity
     }))
   try {
-    const response = await axios.post("/orders" , {
+    const { error } = await supabase.from('orders').insert([{
       userId: id,
       orderList,
       subtotal: cartSubtotal
-    })
-    console.log(response)
+    }])
 
-    return response.data
+    if (error) console.log(error.message)
+
+    if (error) return rejectWithValue(error.message)
+
+    // you can return nothing cuz data is always null
+    return true
   } catch (error) {
     return rejectWithValue(axiosErrorHandler(error))
   }

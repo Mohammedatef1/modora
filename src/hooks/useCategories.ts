@@ -8,10 +8,9 @@ const useCategories = () => {
   const {error, loading , records} = useAppSelector(state => state.categories);
 
   useEffect(()=>{
-    const response = dispatch(actGetCategories())
+    dispatch(actGetCategories())
     return () => {
       dispatch(cleanUpCategories());
-      response.abort();
     }
   },[dispatch])
 

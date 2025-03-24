@@ -10,11 +10,10 @@ const useWishlist = () => {
   const {productsIds , products, error, loading} = wishlist
   const productsFullInfo = products.map(el =>  ({...el , isLiked : productsIds.includes(el.id), quantity: items[el.id], isAuthenticated : true }))
   useEffect(() => {
-    const response = dispatch(actGetWishlistProducts("productsFullInfo"))
+    dispatch(actGetWishlistProducts("productsFullInfo"))
 
     return () => {
       dispatch(productsCleanUp());
-      response.abort();
     }
   }, [dispatch])
 

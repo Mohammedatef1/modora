@@ -2,7 +2,7 @@ import FeatureItem from "./FeatureItem"
 
 const Features = () => {
   return (
-    <div className="max-w-7xl mx-auto p-4 sm:p-6 flex flex-col md:flex-row items-center gap-6 py-32">
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 py-10 md:py-20 lg:py-32 flex flex-col md:flex-row items-center gap-6">
       <div className="w-full md:w-1/4 flex items-center justify-center md:justify-start">
         <h2 className="text-4xl font-bold">Why choosing us</h2>
       </div>

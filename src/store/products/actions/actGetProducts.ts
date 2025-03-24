@@ -1,14 +1,13 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import axios from "axios";
-import { TProduct } from "src/customTypes/product";
-import axiosErrorHandler from "src/utils/axiosErrorHandler";
+import { supabase } from "src/db/supabase";
 
 export const actGetProducts = createAsyncThunk("products/actGetProducts" , async (prefix:string , thunkAPI)=> {
-  const {rejectWithValue, signal} = thunkAPI
-  try {
-    const response = await axios.get<TProduct>(`/products?cat_prefix=${prefix}`, {signal})
-    return response.data
-  } catch (error) {
-      return rejectWithValue(axiosErrorHandler(error));
+  const {rejectWithValue} = thunkAPI
+
+  const {data: products, error} = await supabase.from('products').select().eq('cat_prefix' , prefix)
+
+  if(error) {
+    return rejectWithValue(error.message)
   }
+  return products
 })

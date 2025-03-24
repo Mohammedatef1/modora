@@ -12,12 +12,11 @@ const useCart = () => {
   const {loading: ordersLoading , error: ordersError} = useAppSelector(state => state.orders)
 
   useEffect(() => {
-    const response = dispatch(actGetFullProductsData())
+    dispatch(actGetFullProductsData())
 
     return () => {
       dispatch(cleanUpCartProducts());
       dispatch(cleanUpOrders())
-      response.abort()
     }
   }, [dispatch])
 

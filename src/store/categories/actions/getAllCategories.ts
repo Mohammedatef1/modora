@@ -1,16 +1,16 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import axios from 'axios';
-import { TCategories } from "src/customTypes/category";
-import axiosErrorHandler from "src/utils/axiosErrorHandler";
+import { supabase } from "src/db/supabase";
 
 const actGetCategories = createAsyncThunk('categories/actGetCategories' , async (_,thunkAPI)=>{
-  const {rejectWithValue, signal} = thunkAPI;
-  try {
-    const response = await axios.get<TCategories>('/categories', {signal});
-    return response.data;
-  } catch (error) {
-    return rejectWithValue(axiosErrorHandler(error));
+  const {rejectWithValue} = thunkAPI;
+
+  const {data: categories, error} = await supabase.from('categories').select()
+
+  if(error) {
+    return rejectWithValue(error.message)
   }
+
+  return categories;
 })
 
 export default actGetCategories
