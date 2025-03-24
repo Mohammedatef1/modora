@@ -27,8 +27,8 @@ const registerSlice = createSlice({
       state.error= null;
     },
     setSession: (state, action) => {
-      state.user = action.payload.session?.user;
-      state.accessToken = action.payload.session?.access_token
+      state.user = action.payload.user;
+      state.accessToken = action.payload.accessToken;
     }
   },
   extraReducers: (builder) => {
