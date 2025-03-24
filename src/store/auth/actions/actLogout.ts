@@ -5,7 +5,6 @@ const actLogout = createAsyncThunk("auth/actLogout",async (_, thunkAPI) =>{
   const {rejectWithValue} = thunkAPI
   
   const {error} = await supabase.auth.signOut()
-  console.log( error)
 
   if(error) return rejectWithValue(error.message)
   

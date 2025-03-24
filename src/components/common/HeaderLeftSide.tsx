@@ -16,8 +16,9 @@ const HeaderLeftSide = () => {
   const {accessToken} = useAppSelector(state => state.auth)
 
   const logOutHandler = () => {
-    dispatch(actLogout());
-    navigate("/login");
+    dispatch(actLogout()).unwrap().then(() => {
+      navigate("/");
+    });
   }
 
   return (
