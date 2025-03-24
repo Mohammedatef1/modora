@@ -10,16 +10,20 @@ interface ProtectedRouteProps {
 const ProtectedRoute = ({children} : ProtectedRouteProps) => {
   
   const navigate = useNavigate()
-  const [user, setUser] = useState<User | null>(null)
+  const [user, setUser] = useState<User>()
   const [error, setError] = useState<unknown>()
 
   const fetchUser = useCallback( async() => {
-    const { data, error } = await supabase.auth.getUser()
-    if (error) {
-      setError(error);
+    const { data: {session}, error } = await supabase.auth.getSession()
+    
+    setError(error);
+
+    if (!session) {
       navigate('/login', {replace: true})
+      return
     }
-    setUser(data.user)
+
+    setUser(session?.user)
   }, [navigate])
 
   useEffect(() => {    
