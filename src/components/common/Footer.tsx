@@ -1,5 +1,8 @@
 import { Link } from "react-router-dom";
 import FooterCol, { TFooterItem } from "./FooterCol";
+import facebook from "@assets/svg/facebook.svg?react"
+import twitter from "@assets/svg/twitter.svg?react"
+import instagram from "@assets/svg/instagram.svg?react"
 
 const servicesItems : TFooterItem[] = [
   {
@@ -35,15 +38,18 @@ const followUsItems : TFooterItem[] = [
   {
     name: 'Facebook',
     link: '',
+    icon: facebook
 
   },
   {
     name: 'Twitter',
     link: '',
+    icon: twitter
   },
   {
     name: 'Instagram',
     link: '',
+    icon: instagram
   }
 ]
 
