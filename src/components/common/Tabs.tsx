@@ -1,5 +1,5 @@
 import { useAppSelector } from '@store/hooks'
-import BestSellingItem from './BestSellingItem'
+import TabItem from './TabItem'
 
 interface tabsProps {
   tabs: string[]
@@ -10,7 +10,7 @@ const Tabs = ({tabs} : tabsProps) => {
   return (
     <div className="p-1.5 bg-dark-gray rounded-3xl w-fit">
       <div className="flex items-center overflow-hidden">
-        {tabs.map(tab => (<BestSellingItem key={tab} active={activeTab.toLowerCase() === tab.toLowerCase()} name={tab} />))}
+        {tabs.map(tab => (<TabItem key={tab} active={activeTab.toLowerCase() === tab.toLowerCase()} name={tab} />))}
       </div>
     </div>
   )

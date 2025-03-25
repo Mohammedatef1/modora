@@ -1,4 +1,4 @@
-import BestProducts from "@components/common/BestProducts";
+import BestSellingProducts from "@components/common/BestSellingProducts";
 import FeatureHighlight from "@components/common/FeatureHighlight";
 import Features from "@components/common/Features";
 import Hero from "@components/common/Hero";
@@ -10,9 +10,9 @@ import materialCompoundSecond from "@assets/images/material compound second.png"
 const Home = () => {
   return ( 
   <div>
-    <Hero/>
-    <Features/>
-    <BestProducts/>
+    <Hero />
+    <Features />
+    <BestSellingProducts />
 
     <FeatureHighlight title="We provide you the best experience" subtitle="Experiences" ctaLabel="More info" ctaLink="/" description="You don’t have to worry about the result because all of these interiors are made by people who are professionals in their fields with an elegant and lucurious style and with premium quality materials" featureImg={experienceImage} mode="standard" />
 

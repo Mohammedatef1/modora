@@ -1,7 +1,7 @@
 import ArrowButton from "./ArrowButton"
 import Tabs from "./Tabs"
 
-const BestProducts = () => {
+const BestSellingProducts = () => {
   return (
     <div className="bg-light-gray">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 py-12 flex flex-col items-center">
@@ -14,4 +14,4 @@ const BestProducts = () => {
   )
 }
 
-export default BestProducts
+export default BestSellingProducts

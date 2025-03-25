@@ -1,12 +1,12 @@
 import { useAppDispatch } from "@store/hooks";
 import { setActiveTab } from "@store/tabs/tabsSlice";
 
-interface BestSellingItemProps {
+interface TabItemProps {
   active?: boolean;
   name: string;
 }
 
-const BestSellingItem = ({active = false, name} : BestSellingItemProps) => {
+const TabItem = ({active = false, name} : TabItemProps) => {
   const dispatch = useAppDispatch()
 
   const clickHandler = () => {
@@ -20,4 +20,4 @@ const BestSellingItem = ({active = false, name} : BestSellingItemProps) => {
   )
 }
 
-export default BestSellingItem
+export default TabItem
