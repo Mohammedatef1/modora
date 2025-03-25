@@ -1,24 +1,24 @@
 import ArrowButton from "./ArrowButton";
 
-type BaseProps = {
+type FeatureHighlightProps = {
   title: string;
   subtitle: string;
   description: string;
   ctaLabel: string;
   ctaLink: string;
-};
+} & (StandardModeType | CompoundModeType)
 
-type FeatureHighlightProps = 
-    (BaseProps & { 
-      mode: "standard"; 
-      featureImg: string; 
-    }) 
-  | (BaseProps & { 
-      mode: "compact"; 
-      featureImg: string; 
-      compactFirstImage: string; 
-      compactSecondImage: string; 
-    });
+type StandardModeType = { 
+  mode: "standard"; 
+  featureImg: string; 
+}
+
+type CompoundModeType = { 
+  mode: "compact"; 
+  featureImg: string; 
+  compactFirstImage: string; 
+  compactSecondImage: string; 
+}
 
 const FeatureHighlight = ({ctaLabel, ctaLink, description, featureImg, subtitle, title, mode, compactFirstImage, compactSecondImage} : FeatureHighlightProps) => {
   return (
