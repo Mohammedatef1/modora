@@ -60,7 +60,7 @@ const Footer = () => {
       <div className="my-10 md:my-16 lg:my-28 grid md:grid-cols-5 grid-cols-2 gap-x-3 gap-y-7 md:justify-items-center lg:justify-items-start">
         <div className="col-span-2">
           <h2 className="text-xl md:text-3xl font-bold mb-3 md:mb-7">Quick Cart</h2>
-          <p className="max-w-xs">The advantage of hiring a workspace with us is that givees you comfortable service and all-around facilities.</p>
+          <p className="max-w-xs">The advantage of hiring a workspace with us is that gives you comfortable service and all-around facilities.</p>
         </div>
 
         <FooterCol title="Services" items={servicesItems} />
