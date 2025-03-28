@@ -82,7 +82,7 @@ const Testimonials = () => {
         <h2 className='text-primary text-base md:text-lg font-semibold mb-1 md:mb-3'>Testimonials</h2>
         <h3 className='text-2xl md:text-3xl lg:text-4xl font-bold'>Our Client Reviews</h3>
       </div>
-      <div className='relative'>
+      <div className='relative mx-7 2xl:mx-0'>
         <Swiper
           onSwiper={(swiper) => (swiperRef.current = swiper)}
           spaceBetween={10}
@@ -118,9 +118,13 @@ const Testimonials = () => {
               </div>
             </SwiperSlide>
           ))}
-        </Swiper> 
-        <button onClick={() => swiperRef.current?.slideNext()} className='swiper-arrow-next p-3 rounded-full bg-white absolute right-0 translate-x-1/2 top-1/3 -translate-y-1/2 z-10 shadow-md'><SwiperArrow className='rotate-180 rtl:rotate-0' /></button>
-        <button onClick={() => swiperRef.current?.slidePrev()} className='swiper-arrow-prev p-3 rounded-full bg-white absolute left-0 -translate-x-1/2 top-1/3 -translate-y-1/2 z-10 shadow-md'><SwiperArrow className='rotate-0 rtl:rotate-180' /></button>
+        </Swiper>
+        <button onClick={() => swiperRef.current?.slideNext()} className='swiper-arrow-next p-3 rounded-full bg-white absolute right-0 translate-x-1/2 top-1/3 -translate-y-1/2 z-10 shadow-md'>
+          <SwiperArrow className='rotate-180 rtl:rotate-0 h-[21px]' />
+        </button>
+        <button onClick={() => swiperRef.current?.slidePrev()} className='swiper-arrow-prev p-3 rounded-full bg-white absolute left-0 -translate-x-1/2 top-1/3 -translate-y-1/2 z-10 shadow-md'>
+          <SwiperArrow className='rotate-0 rtl:rotate-180 h-[21px]' />
+        </button>
       </div>
     </div>
   );
