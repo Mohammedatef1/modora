@@ -10,7 +10,6 @@ import testimonialsCover1 from "@assets/images/testimonials cover 1.png"
 import testimonialsCover2 from "@assets/images/testimonials cover 2.png"
 import testimonialsCover3 from "@assets/images/testimonials cover 3.png"
 
-import 'swiper/css';
 import { useRef } from 'react';
 
 interface TTestimonials {
