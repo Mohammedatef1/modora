@@ -31,7 +31,7 @@ const BestSellingProducts = ({ tabs }: {tabs: string[]}) => {
   }, [])
 
   useEffect(() => {
-    const filteredProducts = products.filter(product => product.cat_prefix == activeTab);
+    const filteredProducts = products.filter(product => product.cat_prefix.toLowerCase() == activeTab.toLowerCase());
     setActiveProducts(filteredProducts);
   }, [products, activeTab])
 
