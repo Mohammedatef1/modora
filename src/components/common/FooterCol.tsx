@@ -8,17 +8,17 @@ interface FooterColProps {
 export type TFooterItem = {
   name: string;
   link: string;
-  icon?: React.FunctionComponent
+  Icon?: React.FunctionComponent<React.ComponentProps<"svg">>
 }
 
 const FooterCol: React.FC<FooterColProps> = ({items, title}) => {
   return (
     <div className="flex flex-col gap-y-1.5 md:gap-y-4">
       <h4 className="mb-0.5 md:mb-1 text-primary text-base lg:text-lg">{title}</h4>
-      {items?.map((item, index) => (
-        <Link to={item.link} key={index} className="flex items-center gap-x-2">
-          {item.icon && <span className="size-5 flex justify-center"><item.icon /></span>}
-          <span>{item.name}</span>
+      {items?.map(({link, name, Icon}, index) => (
+        <Link to={link} key={index} className="flex items-center gap-x-2">
+          {Icon && <Icon className="size-5" />}
+          <span>{name}</span>
         </Link>
       ))}
     </div>

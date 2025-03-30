@@ -2,7 +2,7 @@ import {  memo, useCallback, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom"
 
 interface CounterItemProps {
-  Icon : React.FunctionComponent;
+  Icon : React.FunctionComponent<React.ComponentProps<"svg">>;
   totalQuantity: number;
   to: string;
 }
@@ -30,7 +30,7 @@ const CounterItem = memo(({Icon, totalQuantity, to} : CounterItemProps) => {
   return (
     <div className='flex items-center gap-x-2 cursor-pointer' onClick={handleNavigate}>
       <div className='relative'>
-        <Icon/>
+        <Icon />
         { totalQuantity > 0 && <div className={` ${isAnimated? 'pulseAnimation' : ''} p-1 bg-primary-dark text-background rounded-full aspect-square absolute -top-3 -right-3 flex items-center justify-center h-6 text-sm`}>{totalQuantity}</div>}
       </div>
     </div>

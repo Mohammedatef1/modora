@@ -38,18 +38,18 @@ const followUsItems : TFooterItem[] = [
   {
     name: 'Facebook',
     link: '',
-    icon: facebook
+    Icon: facebook
 
   },
   {
     name: 'Twitter',
     link: '',
-    icon: twitter
+    Icon: twitter
   },
   {
     name: 'Instagram',
     link: '',
-    icon: instagram
+    Icon: instagram
   }
 ]
 
