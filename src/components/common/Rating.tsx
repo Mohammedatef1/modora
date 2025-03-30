@@ -1,4 +1,4 @@
-import Star from "@assets/svg/Star.svg?react"
+import Star from "@assets/svg/star.svg?react"
 
 interface RatingProps {
   rating: 0 | 1 | 2 | 3 | 4 | 5;
