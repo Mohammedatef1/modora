@@ -100,10 +100,10 @@ const Testimonials = () => {
           {testimonialsArray.map((el, index) => (
             <SwiperSlide key={index}>
               <div className='h-[476px] rounded-2xl relative overflow-hidden p-3 md:p-6 flex items-end'>
-                <img src={el.cover} alt={`${el.name}'s cover`} width={370} height={476} className='absolute w-full h-full object-cover top-0 left-0 rounded-2xl' />
+                <img loading='lazy' src={el.cover} alt={`${el.name}'s cover`} width={370} height={476} className='absolute w-full h-full object-cover top-0 left-0 rounded-2xl' />
                 <div className='rounded-xl bg-white relative w-full'>
                   <div className='rounded-full p-1 md:p-2 absolute transform top-0 -translate-y-1/2 left-1/2 -translate-x-1/2 bg-white'>
-                    <img src={el.avatar} alt={`${el.name}'s avatar`} className='rounded-full size-12 shadow-lg'/>
+                    <img loading="lazy" src={el.avatar} alt={`${el.name}'s avatar`} className='rounded-full size-12 shadow-lg'/>
                   </div>
                   <div className='mt-7 md:mt-8 p-2 md:p-4 text-center flex flex-col items-center gap-y-3 md:gap-y-5'>
                     <div>

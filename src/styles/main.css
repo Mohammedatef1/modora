@@ -47,6 +47,13 @@ body{
   }
 }
 
+.loader-wrapper{
+  height: calc(100vh - 84px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .hero-section-content{
   padding-block: clamp(2.5rem, 0.0792rem + 10.3286vw, 9.375rem);
 }

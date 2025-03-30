@@ -17,7 +17,7 @@ const CartItem = memo(({id, price, max, title, img, quantity} : TProduct) => {
     <div className="grid cart-grid gap-x-2 md:gap-x-3 p-4 text-sm md:text-base py-3 border-b border-gray-400 last:border-b-0 items-center">
 
       <div className="col-span-2 max-w-24 aspect-square">
-        <img src={img} className="w-full h-full object-contain" alt="" /> 
+        <img loading="lazy" src={img} className="w-full h-full object-contain" alt="" /> 
       </div>
       <div className="col-span-3">
         <h2>{title}</h2>

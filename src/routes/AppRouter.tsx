@@ -4,6 +4,7 @@ import Error from "@pages/Error"
 import Register from '@pages/Register'
 import Login from '@pages/Login'
 import ProtectedRoute from '@components/common/ProtectedRoute'
+import Loader from '@components/feedback/Loader'
 const ProfileLayout = lazy(() => import("@layouts/ProfileLayout"))
 const Profile = lazy(() => import("@pages/Profile"))
 const Orders = lazy(()=> import("@pages/Orders"))
@@ -19,7 +20,7 @@ const router = createBrowserRouter([
   {
       path: "/",
       element: 
-        (<Suspense fallback={<p>Loading please wait...</p>}>
+        (<Suspense fallback={<div className='h-screen flex items-center justify-center'><Loader /></div>}>
           <MainLayout/>
         </Suspense>),
       errorElement: <Error/>,
@@ -27,21 +28,21 @@ const router = createBrowserRouter([
           {
               index: true,
               element: 
-                (<Suspense fallback={<p>Loading please wait...</p>}>
+                (<Suspense fallback={<div className='loader-wrapper'><Loader /></div>}>
                   <Home/>
                 </Suspense>)
           },
           {
               path: "categories",
               element: 
-                (<Suspense fallback={<p>Loading please wait...</p>}>
+                (<Suspense fallback={<div className='loader-wrapper'><Loader /></div>}>
                   <Categories/>
                 </Suspense>)
           },
           {
               path: "categories/products/:prefix",
               element: 
-                (<Suspense fallback={<p>Loading please wait...</p>}>
+                (<Suspense fallback={<div className='loader-wrapper'><Loader /></div>}>
                   <Products/>
                 </Suspense>),
               loader: ( { params } )=> {
@@ -57,42 +58,42 @@ const router = createBrowserRouter([
           {
               path: "about-us",
               element: 
-                (<Suspense fallback={<p>Loading please wait...</p>}>
+                (<Suspense fallback={<div className='loader-wrapper'><Loader /></div>}>
                   <AboutUs/>
                 </Suspense>)
           },
           {
             path: 'cart',
             element:  
-              (<Suspense fallback={<p>Loading please wait...</p>}>
+              (<Suspense fallback={<div className='loader-wrapper'><Loader /></div>}>
                 <Cart/>
               </Suspense>)
           },
           {
             path: 'wishlist',
             element:  
-              (<Suspense fallback={<p>Loading please wait...</p>}>
+              (<Suspense fallback={<div className='loader-wrapper'><Loader /></div>}>
                 <ProtectedRoute><Wishlist/></ProtectedRoute>
               </Suspense>)
           },
           {
             path: 'register',
             element:  
-              (<Suspense fallback={<p>Loading please wait...</p>}>
+              (<Suspense fallback={<div className='loader-wrapper'><Loader /></div>}>
                 <Register/>
               </Suspense>)
           },
           {
             path: 'login',
             element:  
-              (<Suspense fallback={<p>Loading please wait...</p>}>
+              (<Suspense fallback={<div className='loader-wrapper'><Loader /></div>}>
                 <Login/>
               </Suspense>)
           },
           {
             path: "profile",
             element: 
-            (<Suspense fallback={<p>Loading please wait...</p>}>
+            (<Suspense fallback={<div className='loader-wrapper'><Loader /></div>}>
               <ProtectedRoute>
                 <ProfileLayout/>
               </ProtectedRoute>
@@ -101,14 +102,14 @@ const router = createBrowserRouter([
               {
                 index: true,
                 element: 
-                (<Suspense fallback={<p>Loading please wait...</p>}>
+                (<Suspense fallback={<div className='loader-wrapper'><Loader /></div>}>
                   <Profile/>
                 </Suspense>)
               },
               {
                 path: "orders",
                 element: 
-                (<Suspense fallback={<p>Loading please wait...</p>}>
+                (<Suspense fallback={<div className='loader-wrapper'><Loader /></div>}>
                   <Orders/>
                 </Suspense>)
               }

@@ -57,7 +57,7 @@ const ProductCard = memo(({product} : ProductCardProps) => {
     <div className="product-card rounded-2xl overflow-hidden bg-white">
       <div className="bg-light-gray-50 p-3 md:p-4 aspect-square relative">
         <Link to="">
-          <img src={img} alt={`${title}'s image`} className="w-full h-full object-contain" />
+          <img loading="lazy" src={img} alt={`${title}'s image`} className="w-full h-full object-contain" />
         </Link>
         <button className="absolute top-4 right-4 w-7 h-7 cursor-pointer rounded-full flex items-center justify-center hover:shadow-md transition disabled:opacity-60" disabled={isLoading} onClick={likeToggleHandler}>
         { isLiked ? <LikeFill /> : <Like /> }
