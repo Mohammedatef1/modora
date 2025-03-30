@@ -3,15 +3,14 @@ import LottieHandler from "@feedback/LottieHandler";
 
 const Error = () => {
   const error = useRouteError();
-  let responseCode:number;
+  //let responseCode:number;
   let responseMessage:string;
 
   if (isRouteErrorResponse(error) && error.status !== 404){
-    responseCode = error.status;
+    //responseCode = error.status;
     responseMessage = error.statusText;
   } else{
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    responseCode = 404;
+    //responseCode = 404;
     responseMessage = "Sorry, we were unable to find that page"
   }
   
