@@ -1,6 +1,6 @@
 import AppRouter from '@routes/AppRouter'
 import '@styles/main.css'
-import 'swiper/css';
+import 'swiper/swiper-bundle.css';
 import { createRoot } from 'react-dom/client'
 import { persistor, store } from '@store/store'
 import {Provider} from 'react-redux'
