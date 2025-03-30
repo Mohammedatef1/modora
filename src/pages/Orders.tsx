@@ -32,7 +32,7 @@ const Orders = () => {
           </div>
           )}
           {userOrders.map((order, index) => 
-          (<div className="grid grid-cols-3 p-2 hover:bg-gray-100 cursor-pointer transition-colors text-sm md:text-base">
+          (<div key={order.id} className="grid grid-cols-3 p-2 hover:bg-gray-100 cursor-pointer transition-colors text-sm md:text-base">
             <p className="font-semibold">#{index + 1}</p>
             <p>{order.orderList.length} item(s)</p>
             <p>{order.subtotal.toFixed(2)} EGP</p>

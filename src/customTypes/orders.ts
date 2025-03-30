@@ -1,7 +1,7 @@
 import { TProduct } from "./product";
 
 export type TOrderItem = {
-  userId: number;
+  userId: string;
   orderList: TProduct[];
   subtotal: number;
   id: number

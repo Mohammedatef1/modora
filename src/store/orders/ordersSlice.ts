@@ -48,7 +48,7 @@ const ordersSlice = createSlice({
     })
     builder.addCase(actGetUserOrders.fulfilled , (state, action) => {
       state.loading = "fulfilled";
-      state.userOrders = action.payload;
+      state.userOrders = Array.isArray(action.payload) ? action.payload : [action.payload]
       state.error = null;
     })
     builder.addCase(actGetUserOrders.rejected , (state, action) => {

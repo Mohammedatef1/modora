@@ -1,6 +1,6 @@
 type TWishlist = {
   id: string;
-  userId: number;
+  userId: string;
   productId: number;
 }
 
