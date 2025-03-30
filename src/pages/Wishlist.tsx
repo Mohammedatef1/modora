@@ -1,6 +1,6 @@
 import Breadcrumb from "@components/common/Breadcrumb"
 import GridList from "@components/common/GridList"
-import Product from "@components/eCommerce/Product"
+import ProductCard from "@components/eCommerce/ProductCard"
 import Loading from "@feedback/Loading"
 import useWishlist from "@hooks/useWishlist"
 
@@ -12,7 +12,7 @@ const Wishlist = () => {
     <Breadcrumb path="home/wishlist"/>
     <div className="max-w-7xl m-auto p-4 sm:p-6">
       <Loading type="product" error={error} loading={loading}>
-        <GridList records={productsFullInfo} renderedElementFunction={(record) => (<Product {...record} key={record.id}/>)}/>
+        <GridList records={productsFullInfo} renderedElementFunction={(record) => (<ProductCard product={record} key={record.id}/>)}/>
       </Loading>
     </div>
   </>
