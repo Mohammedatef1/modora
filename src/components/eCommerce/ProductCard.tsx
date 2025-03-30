@@ -2,7 +2,7 @@ import { TProduct } from "@customTypes/product"
 import { Link } from "react-router-dom"
 import { capitalizeFirstLetter } from "src/utils"
 import Rating from "../common/Rating"
-import { useEffect, useState } from 'react'
+import { memo, useEffect, useState } from 'react'
 import { useAppDispatch } from '@store/hooks'
 import { addToCart } from '@store/cart/cartSlice'
 import actLikeToggle from '@store/wishlist/actions/actLikeToggle'
@@ -15,7 +15,7 @@ interface ProductCardProps {
   product: TProduct
 }
 
-const ProductCard = ({product} : ProductCardProps) => {
+const ProductCard = memo(({product} : ProductCardProps) => {
   const {id, cat_prefix, img, max, price, title, isAuthenticated, isLiked, quantity} = product
 
   const dispatch = useAppDispatch()
@@ -55,14 +55,14 @@ const ProductCard = ({product} : ProductCardProps) => {
 
   return (
     <div className="product-card rounded-2xl overflow-hidden bg-white">
-      <Link to="">
-        <div className="bg-light-gray-50 p-3 md:p-4 aspect-square relative">
+      <div className="bg-light-gray-50 p-3 md:p-4 aspect-square relative">
+        <Link to="">
           <img src={img} alt={`${title}'s image`} className="w-full h-full object-contain" />
-          <button className="absolute top-4 right-4 w-7 h-7 cursor-pointer rounded-full flex items-center justify-center hover:shadow-md transition disabled:opacity-60" disabled={isLoading} onClick={likeToggleHandler}>
-          { isLiked ? <LikeFill /> : <Like /> }
-        </button>
-        </div>
-      </Link>
+        </Link>
+        <button className="absolute top-4 right-4 w-7 h-7 cursor-pointer rounded-full flex items-center justify-center hover:shadow-md transition disabled:opacity-60" disabled={isLoading} onClick={likeToggleHandler}>
+        { isLiked ? <LikeFill /> : <Like /> }
+      </button>
+      </div>
       <div className="py-3 md:py-4 px-3 md:px-5">
         <div className="flex flex-col gap-y-1 mb-6 md:mb-9">
           <p className="opacity-60 text-base md:text-lg leading-none">{capitalizeFirstLetter(cat_prefix)}</p>
@@ -78,6 +78,6 @@ const ProductCard = ({product} : ProductCardProps) => {
       </div>
     </div>
   )
-}
+})
 
 export default ProductCard

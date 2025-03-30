@@ -14,7 +14,7 @@ const CartItem = memo(({id, price, max, title, img, quantity} : TProduct) => {
     }))
   }
   return (
-    <div className="grid cart-grid bg-light-pink-100 gap-x-2 md:gap-x-3 p-4 text-sm md:text-base py-3 border-b border-gray-400 last:border-b-0 items-center">
+    <div className="grid cart-grid gap-x-2 md:gap-x-3 p-4 text-sm md:text-base py-3 border-b border-gray-400 last:border-b-0 items-center">
 
       <div className="col-span-2 max-w-24 aspect-square">
         <img src={img} className="w-full h-full object-contain" alt="" /> 
@@ -26,14 +26,14 @@ const CartItem = memo(({id, price, max, title, img, quantity} : TProduct) => {
         <h3>{price.toFixed(2)} EGP</h3>
       </div>
       <div className="col-span-2">        
-        <select name="quantity" onChange={onChangeHandler} defaultValue={quantity} id={`${id}-quantity`} className="w-16 p-1 max-w-full">
+        <select name="quantity" onChange={onChangeHandler} defaultValue={quantity} id={`${id}-quantity`} className="w-16 p-1 max-w-full border border-gray-300">
           {maxQuantityArray.map((el) => (<option key={el} value={el}>{el}</option>))}
         </select>
       </div>
       <div className="col-span-3">
         <h3>{(price * ( quantity || 1)).toFixed(2)} EGP</h3>
       </div>
-      <div className="col-span-2">
+      <div className="col-span-1">
         <button onClick={() => {dispatch(removeFromCart(id))}}>
           <Delete className="fill-red-700" />
         </button>

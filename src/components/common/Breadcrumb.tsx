@@ -1,4 +1,5 @@
 import breadcrumbBackground from "@assets/images/breadcrumb background.png"
+import { memo } from "react"
 import { Link } from "react-router-dom"
 import { capitalizeFirstLetter } from "src/utils"
 
@@ -6,7 +7,7 @@ interface BreadcrumbProps {
   path: string
 }
 
-const Breadcrumb = ({ path }: BreadcrumbProps) => {
+const Breadcrumb = memo(({ path }: BreadcrumbProps) => {
   const pathItems = path.split('/')
   console.log(pathItems)
   return (
@@ -25,6 +26,6 @@ const Breadcrumb = ({ path }: BreadcrumbProps) => {
       </div>
     </div>
   )
-}
+})
 
 export default Breadcrumb

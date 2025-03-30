@@ -21,7 +21,7 @@ const Cart = () => {
                 <div className="col-span-3"><p>Price</p></div>
                 <div className="col-span-2"><p>Quantity</p></div>
                 <div className="col-span-3"><p>subtotal</p></div>
-                <span className="col-span-2"></span>
+                <span className="col-span-1"></span>
               </div>}
 
               <Loading error={cartError} type="cart" loading={cartLoading}>
@@ -31,12 +31,12 @@ const Cart = () => {
             </div>
           </div>
 
-          <div className="col-span-1 bg-light-pink-100">
+          <div className="col-span-1 bg-light-pink-100 pt-4 pb-8 px-16 h-fit">
             <CartTotal></CartTotal>
             {accessToken && <div className="flex flex-col items-center">
-              <button onClick={placeOrderHandler} disabled={ordersLoading === "pending"} className="ms-auto bg-blue-500 px-4 py-2 rounded-sm text-white disabled:opacity-75 transition-opacity">Place order</button>
+              <button onClick={placeOrderHandler} disabled={ordersLoading === "pending"} className="bg-transparent px-4 py-2 disabled:opacity-75 transition-opacity my-10 border-secondary border-2 rounded-lg">Place order</button>
             </div>}
-            {ordersError && <p className="w-fit ms-auto text-red-500">{ordersError}</p>}
+            {ordersError && <p className="text-center text-red-500">{ordersError}</p>}
           </div>
         </div>
       </div>
