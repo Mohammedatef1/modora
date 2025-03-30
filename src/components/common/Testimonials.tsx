@@ -97,8 +97,8 @@ const Testimonials = () => {
           loop={true}
           onSlideChange={(swiper) => console.log(swiper)}
         >
-          {testimonialsArray.map((el) => (
-            <SwiperSlide>
+          {testimonialsArray.map((el, index) => (
+            <SwiperSlide key={index}>
               <div className='h-[476px] rounded-2xl relative overflow-hidden p-3 md:p-6 flex items-end'>
                 <img src={el.cover} alt={`${el.name}'s cover`} width={370} height={476} className='absolute w-full h-full object-cover top-0 left-0 rounded-2xl' />
                 <div className='rounded-xl bg-white relative w-full'>

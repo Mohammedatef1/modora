@@ -52,7 +52,7 @@ const BestSellingProducts = ({ tabs }: {tabs: string[]}) => {
             }}
           >
             {activeProducts.map((product) => (
-              <SwiperSlide>
+              <SwiperSlide key={product.id}>
                 <ProductCard product={{
                   ...product,      
                   quantity: cartItems[product.id] || 0,

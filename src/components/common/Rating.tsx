@@ -11,7 +11,7 @@ const Rating = ({rating} : RatingProps) => {
   return (
     <div className="flex items-center gap-x-1.5">
       {Array.from({length: 5}).fill(0).map((_, index) => (
-        <Star className={`${(index + 1) > rating ? 'opacity-50' : ''}`} />
+        <Star key={index} className={`${(index + 1) > rating ? 'opacity-50' : ''}`} />
       ))}
     </div>
   )
