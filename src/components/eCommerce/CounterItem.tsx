@@ -31,7 +31,7 @@ const CounterItem = memo(({Icon, totalQuantity, to} : CounterItemProps) => {
     <div className='flex items-center gap-x-2 cursor-pointer' onClick={handleNavigate}>
       <div className='relative'>
         <Icon/>
-        { totalQuantity > 0 && <div className={` ${isAnimated? 'pulseAnimation' : ''} p-1 bg-primary rounded-full aspect-square absolute -top-3 -right-3 flex items-center justify-center h-6 text-sm`}>{totalQuantity}</div>}
+        { totalQuantity > 0 && <div className={` ${isAnimated? 'pulseAnimation' : ''} p-1 bg-primary-dark text-background rounded-full aspect-square absolute -top-3 -right-3 flex items-center justify-center h-6 text-sm`}>{totalQuantity}</div>}
       </div>
     </div>
   )

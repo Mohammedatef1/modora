@@ -33,7 +33,7 @@ const cartsSlice = createSlice({
       const {id} = action.payload
       const {value : quantity} = action.payload
       state.items[id] = quantity;
-      state.products = state.products.map(el => el.id == id ? {...el, quantity: quantity} : el)
+      state.products.filter(el => el.id === id)[0].quantity = quantity
     },
     removeFromCart : (state, action) =>{
       delete state.items[action.payload]

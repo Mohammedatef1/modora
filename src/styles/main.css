@@ -50,3 +50,7 @@ body{
 .hero-section-content{
   padding-block: clamp(2.5rem, 0.0792rem + 10.3286vw, 9.375rem);
 }
+
+.cart-grid{
+  grid-template-columns: repeat(15, minmax(0, 1fr));
+}

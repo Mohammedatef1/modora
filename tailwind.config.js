@@ -15,6 +15,7 @@ module.exports = {
         "light-gray-50": "#fafafa",
         "light-gray-100": "#F7F7F7",
         "light-gray-200": "#EEEEEE",
+        "light-pink-100": "#F9F1E7"
       }
     },
   },
