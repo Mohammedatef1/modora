@@ -34,8 +34,8 @@ const FeatureHighlight = (props : FeatureHighlightProps) => {
             <img loading="lazy" src={props.compactFirstImage} className="w-full aspect-square object-cover rounded-2xl shadow-md" alt="" />
             <img loading="lazy" src={props.compactSecondImage} className="w-full aspect-[1/1.42] object-cover rounded-2xl shadow-md" alt="" />
           </div>
-          <div className="col-span-6">
-            <img loading="lazy" src={featureImg} width={450} height={629} className="w-full h-auto rounded-s-2xl shadow-lg" alt="" />
+          <div className="col-span-6 -me-4">
+            <img loading="lazy" src={featureImg} width={450} height={629} className="w-full h-auto rounded-2xl shadow-lg" alt="" />
           </div>
         </div>) }
       </div>
