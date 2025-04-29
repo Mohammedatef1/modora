@@ -1,12 +1,22 @@
+import { JSX } from "react";
+
 interface MaxWidthWrapperProps {
   children: React.ReactNode;
-  className?: string
+  className?: string;
+  type?: keyof JSX.IntrinsicElements;
 }
 
-const MaxWidthWrapper: React.FC<MaxWidthWrapperProps> = ({children, className}) => {
+const MaxWidthWrapper: React.FC<MaxWidthWrapperProps> = ({
+  children,
+  className = '',
+  type = 'div',
+}) => {
+  const Component = type;
   return (
-    <div className={`max-w-7xl mx-auto px-4 sm:px-6 ${className}`}>{children}</div>
-  )
-}
+    <Component className={`max-w-7xl mx-auto px-4 sm:px-6 ${className}`}>
+      {children}
+    </Component>
+  );
+};
 
 export default MaxWidthWrapper
