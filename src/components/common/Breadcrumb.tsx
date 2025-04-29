@@ -15,11 +15,11 @@ const Breadcrumb = memo(({ path }: BreadcrumbProps) => {
       <img loading="lazy" src={breadcrumbBackground} alt="breadcrumb background image" className="w-full h-full object-cover absolute top-0 left-0 z-0 opacity-50 blur-sm" />
       <div className="relative z-5 text-center">
         <h3 className="font-semibold text-2xl md:text-4xl lg:text-5xl mb-3">{capitalizeFirstLetter(pathItems[pathItems.length -1])}</h3>
-        <div className="flex items-center justify-center gap-x-1.5">
+        <div className="breadcrumb-path flex items-center justify-center gap-x-1.5">
           {pathItems.map((item, index) => (
-            <span key={index}>
-              {pathItems.length === index + 1 ? <p>{capitalizeFirstLetter(item)}</p> : <Link className="font-semibold" to={item === 'home' ? '/' : `/${item}`}>{capitalizeFirstLetter(item)}</Link> }
-              <span className="last:hidden font-semibold">{`>`}</span>
+            <span className="flex items-center gap-x-1.5" key={index}>
+              { pathItems.length === index + 1 ? <p>{capitalizeFirstLetter(item)}</p> : <Link className="font-semibold" to={item === 'home' ? '/' : `/${item}`}>{capitalizeFirstLetter(item)}</Link> }
+              <span className="font-semibold">{`>`}</span>
             </span>
           ))}
         </div>

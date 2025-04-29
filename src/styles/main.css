@@ -61,3 +61,7 @@ body{
 .cart-grid{
   grid-template-columns: repeat(14, minmax(0, 1fr));
 }
+
+.breadcrumb-path span:last-child span{
+  display: none;
+}
