@@ -7,6 +7,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import ProductCard from "../eCommerce/ProductCard";
 import ArrowButton from "./ArrowButton";
 import Tabs from "./Tabs";
+import MaxWidthWrapper from "./MaxWidthWrapper";
 
 const BestSellingProducts = ({ tabs }: {tabs: string[]}) => {
   const swiperRef = useRef<SwiperInstance|null>(null)
@@ -37,7 +38,7 @@ const BestSellingProducts = ({ tabs }: {tabs: string[]}) => {
 
   return (
     <div className="bg-light-gray-100">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 py-12 flex flex-col items-center">
+      <MaxWidthWrapper className="py-12 flex flex-col items-center">
         <h2 className="mb-8 text-3xl md:text-4xl font-bold text-center">Best Selling Products</h2>
         <Tabs activeTab={activeTab} setActiveTab={setActiveTab} tabs={tabs}/>
         <div className="swiperProducts mt-20 mb-16 w-full">
@@ -63,7 +64,7 @@ const BestSellingProducts = ({ tabs }: {tabs: string[]}) => {
           </Swiper>
         </div>
         <ArrowButton label="View All"/>
-      </div>
+      </MaxWidthWrapper>
     </div>
   )
 }
