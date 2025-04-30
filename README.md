@@ -1,50 +1,72 @@
-# React + TypeScript + Vite
+# Modora – E-commerce Furniture Store
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Modora is a fully responsive and mobile-friendly e-commerce demo store built using React and Redux Toolkit. It showcases modern frontend development practices, including authentication, protected routes, state management, and integration with Supabase for backend services. Users can register, sign in, manage their wishlist, view order history, and browse products through a highly optimized and user-friendly interface.
 
-Currently, two official plugins are available:
+## Live Demo
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+[Visit Live Site](https://modora.mohammedatef.tech/) 
 
-## Expanding the ESLint configuration
+## Features
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+- User authentication with sign-up and sign-in functionality
+- Protected routes for authenticated-only pages such as wishlist and orders
+- Smart redirection: prevents signed-in users from accessing authentication pages
+- Global state management using Redux Toolkit
+- Persistent wishlist, cart, and order data per user
+- Supabase integration for authentication and backend storage
+- Form validation with Zod and controlled form inputs using React Hook Form
+- Real-time form error feedback for invalid entries
+- Lazy loading of non-critical components with prioritized above-the-fold content
+- Skeleton loaders for products and categories during data fetching
 
-- Configure the top-level `parserOptions` property like this:
+## Tech Stack
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+- React  
+- React Router DOM  
+- Redux Toolkit  
+- React Hook Form  
+- Zod  
+- Tailwind CSS  
+- Supabase (Authentication, Realtime Database, API)
+
+## Installation and Setup
+
+1. Clone the repository:
+
+```bash
+git clone https://github.com/your-username/modora.git
+cd modora
 ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+2. Install dependencies:
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
-
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
+```bash
+npm install
 ```
+
+3. Create a `.env` file in the root directory and add your Supabase credentials:
+
+```env
+VITE_SUPABASE_URL=your_supabase_url
+VITE_SUPABASE_KEY=your_supabase_key
+```
+
+4. Start the development server:
+
+```bash
+npm run dev
+```
+
+## State and Authentication Flow
+
+- Supabase handles user authentication and session tokens
+- Redux Toolkit manages global state:
+  - Authentication state
+  - Wishlist data
+  - Cart contents
+  - Orders
+- State is updated using Redux Thunks and efficiently shared across the application
+
+## License
+
+This project is licensed under the MIT License.
