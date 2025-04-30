@@ -3,6 +3,7 @@ import HeaderLeftSide from "./HeaderLeftSide";
 import { useAppDispatch, useAppSelector } from "@store/hooks";
 import { useEffect } from "react";
 import actGetWishlistProducts from "@store/wishlist/actions/actGetWishlistProducts";
+import MaxWidthWrapper from "./MaxWidthWrapper";
 
 const Header = () => {
   const dispatch = useAppDispatch()
@@ -15,7 +16,7 @@ const Header = () => {
 
 
   return (
-  <header className="max-w-7xl mx-auto p-4 sm:p-6">
+  <MaxWidthWrapper type="header" fullPadding>
     <div className="flex align-center justify-between ">
       <h1 className="logo text-slate-800 font-bold text-2xl">Modora</h1>
       <nav className="flex items-center gap-2 md:gap-10 lg:gap-16 nav-links-wrapper">
@@ -25,7 +26,7 @@ const Header = () => {
       </nav>
       <HeaderLeftSide/>
     </div>
-  </header> );
+  </MaxWidthWrapper> );
 }
  
 export default Header;

@@ -1,4 +1,5 @@
 import Heading from "@components/common/Heading"
+import MaxWidthWrapper from "@components/common/MaxWidthWrapper"
 import Input from "@components/form/Input"
 import useRegister from "@hooks/useRegister"
 import { Navigate } from "react-router-dom"
@@ -13,8 +14,8 @@ const Register = () => {
   }
 
   return (
-    <>
-      <Heading title="User Register"></Heading>
+    <MaxWidthWrapper>
+      <Heading title="User Register" className="text-center"></Heading>
       <div className="flex justify-center">
         <form onSubmit={handleSubmit(submitHandler , errorHandler)} className="flex flex-col gap-y-3 w-full md:w-1/2">
           <Input error={errors.firstName?.message} label="First Name" name="firstName" register={register}></Input>
@@ -26,7 +27,7 @@ const Register = () => {
           {error && <p className="text-red-500 text-sm">{error}</p>}
         </form>
       </div>    
-    </>
+    </MaxWidthWrapper>
   )
 }
 

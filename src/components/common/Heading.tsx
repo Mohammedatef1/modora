@@ -1,8 +1,13 @@
 import { memo } from "react"
 
-const Heading = memo(({title} : {title : string}) => {
+interface HeadingProps {
+  title: string;
+  className?: string
+}
+
+const Heading : React.FC<HeadingProps> = memo(({title, className}) => {
   return (
-    <h2 className="mb-6 font-bold text-2xl">{title}</h2>
+    <h2 className={`mb-6 font-bold text-2xl ${className}`}>{title}</h2>
   )
 })
 
