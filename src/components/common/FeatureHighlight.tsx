@@ -30,7 +30,7 @@ const FeatureHighlight = (props : FeatureHighlightProps) => {
         featureImg && (<img loading="lazy" src={featureImg} alt="Experience image" width={455} height={629} className="w-11/12 sm:w-10/12 h-auto rounded-e-2xl shadow-lg"/>) 
         : 
         (<div className="grid grid-cols-10 gap-x-4 md:gap-x-6 lg:gap-x-10 items-center md:max-w-2xl">
-          <div className="col-span-4 flex flex-col gap-y-4 md:gap-y-10">
+          <div className="col-span-4 flex flex-col gap-y-4 md:gap-y-10 overflow-hidden">
             <img loading="lazy" src={props.compactFirstImage} className="w-full aspect-square object-cover rounded-2xl shadow-md" alt="" />
             <img loading="lazy" src={props.compactSecondImage} className="w-full aspect-[1/1.42] object-cover rounded-2xl shadow-md" alt="" />
           </div>

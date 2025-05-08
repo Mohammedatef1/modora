@@ -16,7 +16,7 @@ const FooterCol: React.FC<FooterColProps> = ({items, title}) => {
     <div className="flex flex-col gap-y-1.5 md:gap-y-4">
       <h4 className="mb-0.5 md:mb-1 text-primary text-base lg:text-lg">{title}</h4>
       {items?.map(({link, name, Icon}, index) => (
-        <Link to={link} key={index} className="flex items-center gap-x-2">
+        <Link to={link} key={index} className="flex items-center gap-x-2 hover:underline">
           {Icon && <Icon className="size-5" />}
           <span>{name}</span>
         </Link>

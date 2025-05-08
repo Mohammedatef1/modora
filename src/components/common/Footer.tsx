@@ -23,15 +23,15 @@ const servicesItems : TFooterItem[] = [
 const furnitureItems : TFooterItem[] = [
   {
     name: 'Beds',
-    link: '',
+    link: '/categories/products/beds',
   },
   {
-    name: 'Chair',
-    link: '',
+    name: 'Chairs',
+    link: '/categories/products/chairs',
   },
   {
     name: 'All',
-    link: '',
+    link: '/categories',
   }
 ]
 
@@ -70,10 +70,10 @@ const Footer = () => {
 
       </div>
       <div className="mb-4 md:mb-8 lg:mb-12 flex flex-col md:flex-row md:justify-between gap-y-3 items-center">
-        <p className="opacity-60">Copyright © 2021</p>
+        <p className="opacity-60">Copyright © 2025</p>
         <div className="flex items-center gap-x-2 md:gap-x-6">
-          <Link to="">Terms & Conditions</Link>
-          <Link to="">Privacy Policy</Link>
+          <Link className="hover:underline" to="">Terms & Conditions</Link>
+          <Link className="hover:underline" to="">Privacy Policy</Link>
         </div>
       </div>
     </MaxWidthWrapper>

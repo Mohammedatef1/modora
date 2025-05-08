@@ -63,7 +63,7 @@ const BestSellingProducts = ({ tabs }: {tabs: string[]}) => {
             ))}
           </Swiper>
         </div>
-        <ArrowButton label="View All"/>
+        <ArrowButton link={`/categories/products/${activeTab.toLowerCase()}`} label="View All"/>
       </MaxWidthWrapper>
     </div>
   )
