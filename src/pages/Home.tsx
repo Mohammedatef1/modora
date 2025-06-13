@@ -21,7 +21,7 @@ const Home = () => {
 
     <Suspense fallback={<div className="h-20 py-2"><Loader /></div>}>
       <Features />
-      <BestSellingProducts tabs={['Chairs', 'Beds', 'Sofa', 'Lamp']} />
+      <BestSellingProducts tabs={['Chairs', 'Beds', 'Sofas', 'Lamps']} />
 
       <FeatureHighlight title="We provide you the best experience" subtitle="Experiences" ctaLabel="More info" ctaLink="/" description="You don’t have to worry about the result because all of these interiors are made by people who are professionals in their fields with an elegant and lucurious style and with premium quality materials" featureImg={experienceImage} mode="standard" />
 
