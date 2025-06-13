@@ -19,8 +19,6 @@ const Home = () => {
   <div>
     <Hero />
 
-    Test
-
     <Suspense fallback={<div className="h-20 py-2"><Loader /></div>}>
       <Features />
       <BestSellingProducts tabs={['Chairs', 'Beds', 'Sofas', 'Lamps']} />
